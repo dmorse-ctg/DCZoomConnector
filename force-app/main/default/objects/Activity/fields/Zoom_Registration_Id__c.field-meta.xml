@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Zoom_Registration_Id__c</fullName>
+    <description>The zoom registration Id returned from zoom API after we add this record as a registrant to a zoom meeting</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The zoom registration Id returned from zoom API after we add this record as a registrant to a zoom meeting</inlineHelpText>
+    <label>Zoom Registration Id</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

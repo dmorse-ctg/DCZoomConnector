@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Share_Survey_Link__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>It enables to send the survey link in the Thank you email notification.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>It enables to send the survey link in the Thank you email notification. The Thank you email notification should be enabled for this feature to work.</inlineHelpText>
+    <label>Share Survey Link</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Event_Type__c</columns>
+    <columns>Campaign__c</columns>
+    <columns>Topic__c</columns>
+    <columns>Start_Date__c</columns>
+    <columns>Start_Time__c</columns>
+    <columns>Duration__c</columns>
+    <columns>Meeting_URL__c</columns>
+    <columns>Auto_Register__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

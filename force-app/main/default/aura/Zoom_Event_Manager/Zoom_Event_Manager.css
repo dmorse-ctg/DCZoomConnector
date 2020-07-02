@@ -1,0 +1,15 @@
+.THIS .vertical-center{
+	margin: auto !important;
+}
+
+.THIS .error-message{
+	color: red;
+}
+
+.THIS .slds-select[disabled], 
+.THIS .slds-input[disabled], 
+.THIS .slds-textarea[disabled], 
+.THIS .slds-checkbox [type=checkbox][disabled]+.slds-checkbox__label .slds-checkbox_faux {
+    background-color: rgba(236, 235, 234, 0.22);
+    border-color: rgba(236, 235, 234, 0.22);
+}

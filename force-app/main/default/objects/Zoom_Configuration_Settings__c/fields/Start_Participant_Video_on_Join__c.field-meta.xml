@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Start_Participant_Video_on_Join__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>It contains the setting whether participant video should start on joining</description>
+    <externalId>false</externalId>
+    <inlineHelpText>It contains the setting whether participant video should start on joining</inlineHelpText>
+    <label>Start Participant Video on Join</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

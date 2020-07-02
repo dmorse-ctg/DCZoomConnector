@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Zoom_Meeting_Attendance__c</fullName>
+    <description>It contains the attendance status of the invitee</description>
+    <externalId>false</externalId>
+    <inlineHelpText>It contains the attendance status of the invitee</inlineHelpText>
+    <label>Zoom Meeting Attendance</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not Attended</fullName>
+                <default>true</default>
+                <label>Not Attended</label>
+            </value>
+            <value>
+                <fullName>Attended</fullName>
+                <default>false</default>
+                <label>Attended</label>
+            </value>
+            <value>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+                <label>Cancelled</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

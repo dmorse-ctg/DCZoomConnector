@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enforce_Login__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>It contains the setting whether the attendee should be logged in</description>
+    <externalId>false</externalId>
+    <inlineHelpText>It contains the setting whether the attendee should be logged in</inlineHelpText>
+    <label>Enforce Login</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

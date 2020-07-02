@@ -1,0 +1,381 @@
+<!-- 
+    The MIT License
+    Copyright © 2020 DataColada Pty Ltd
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+-->
+<apex:page controller="SFZoom_ConfigDetailsController" sidebar="false" lightningStylesheets="true">
+    
+    <apex:stylesheet value="{!URLFOR($Resource.SFZoom_Resource, 'css/SFZoom_CSS.css')}"/>
+    <apex:actionstatus id="ZoomCallStatus">
+        <apex:facet name="start">
+            <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; height:100%;opacity:0.65;width:100%;">
+                <div class="waitingHolder" style="top: 100px; width: 91px;">
+                    <img class="waitingImage" src="/img/loading.gif" title="{!HTMLENCODE($Label.Action_Status_Waiting_Text)}" />
+                    <span class="waitingDescription">{!HTMLENCODE($Label.Action_Status_Waiting_Description_Text)}</span>
+                </div>
+            </div>
+        </apex:facet>
+    </apex:actionstatus>
+    
+    <apex:variable var="lightningDesktop" value="{!$User.UIThemeDisplayed == 'Theme4d'}" />
+    
+    <apex:slds rendered="{!lightningDesktop}" />
+    
+    <apex:form id="zoom-config">
+        <apex:pageMessages id="errorMsg"/> 
+        <!--LIGHTNING CODE BLOCK START-->
+        <apex:pageBlock id="zoomConfigForm_Lightning" rendered="{!lightningDesktop}">    
+            <div class="slds">
+                <article class="slds-card">
+                    <div class="slds-card__header slds-grid">
+                        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                            <div class="slds-media__body slds-p-left_medium slds-p-top_x-small">
+                                <h2 class="slds-card__header-title"><span>{!HTMLENCODE($Label.Zoom_Setting_Page_Title)}</span></h2>
+                            </div>
+                        </header>
+                    </div>
+                    <div class="slds-card__body slds-card__body_inner">
+                        
+                        <apex:pageBlock id="zoomSetting">
+                            
+                            <fieldset class="slds-form-element slds-form_compound slds-border-around slds-p-around_medium slds-m-bottom_small">
+                                <legend class="slds-p-left_x-small slds-p-right_x-small">{!HTMLENCODE($Label.API_Settings)}</legend>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__group">
+                                        <div class="slds-form-element__row">
+                                            <div class="slds-form-element slds-size_1-of-2">
+                                                <c:SFZoom_Label_Help_Text isRequired="{!!isRecordExist || isUpdate}" label="{!HTMLENCODE($Label.Zoom_API_Key)}" helpText="{!HTMLENCODE($Label.Zoom_API_Key_Help_Text)}" />
+                                                <apex:outputText styleClass="slds-form-element__label" value="{!zoomAPIKey}" rendered="{!isRecordExist && !isUpdate}"/>
+                                                <apex:inputText styleClass="slds-input" value="{!zoomAPIKey}" rendered="{!!isRecordExist || isUpdate}" />
+                                            </div>
+                                            <div class="slds-form-element slds-size_1-of-2">                                        
+                                                <c:SFZoom_Label_Help_Text isRequired="{!!isRecordExist || isUpdate}" label="{!HTMLENCODE($Label.Zoom_API_Secret)}" helpText="{!HTMLENCODE($Label.Zoom_API_Secret_Help_Text)}" />
+                                                <apex:outputText styleClass="slds-form-element__label" value="{!ZoomAPISecret}" rendered="{!isRecordExist && !isUpdate}"/>
+                                                <apex:inputText styleClass="slds-input"  value="{!ZoomAPISecret}" rendered="{!!isRecordExist || isUpdate}"/>
+                                            </div>
+                                        </div>
+                                        <div class="slds-form-element__row">
+                                            <div class="slds-form-element slds-size_1-of-2">
+                                                <c:SFZoom_Label_Help_Text isRequired="{!!isRecordExist || isUpdate}" label="{!HTMLENCODE($Label.Zoom_URL)}" helpText="{!HTMLENCODE($Label.Zoom_URL_Help_Text)}" />
+                                                <apex:outputText styleClass="slds-form-element__label" value="{!ZoomURL}" rendered="{!isRecordExist && !isUpdate}"/>
+                                                <apex:inputText styleClass="slds-input"  value="{!ZoomURL}" rendered="{!!isRecordExist || isUpdate}"/>
+                                            </div>
+                                            <div class="slds-form-element slds-size_1-of-2">
+                                                <c:SFZoom_Label_Help_Text isRequired="{!!isRecordExist || isUpdate}" label="{!HTMLENCODE($Label.Zoom_User_Email)}" helpText="{!HTMLENCODE($Label.Zoom_User_Email_Help_Text)}"/>
+                                                <apex:outputText styleClass="slds-form-element__label" value="{!ZoomUserEmail}" rendered="{!isRecordExist && !isUpdate}"/>
+                                                <apex:inputText styleClass="slds-input"  value="{!ZoomUserEmail}" rendered="{!!isRecordExist || isUpdate}"/>
+                                            </div>                                            
+                                        </div>
+                                        <div class="slds-form-element__row">
+                                            <div class="slds-form-element slds-size_1-of-2">
+                                                <c:SFZoom_Label_Help_Text isRequired="{!!isRecordExist || isUpdate}" label="{!HTMLENCODE($Label.Event_Invitation_Email_Sender_Name)}" helpText="{!HTMLENCODE($Label.Event_Invitation_Email_Sender_Name_Help_Text)}" />
+                                                <apex:outputText styleClass="slds-form-element__label" value="{!emailSenderName}" rendered="{!isRecordExist && !isUpdate}"/>
+                                                <apex:inputText styleClass="slds-input"  value="{!emailSenderName}" rendered="{!!isRecordExist || isUpdate}" />
+                                            </div>
+                                            <div class="slds-form-element slds-size_1-of-2">
+                                                <c:SFZoom_Label_Help_Text isRequired="{!!isRecordExist || isUpdate}" label="{!HTMLENCODE($Label.SF_Site_URL)}" helpText="{!HTMLENCODE($Label.SF_Site_URL_Help_Text)}" />
+                                                <apex:outputText styleClass="slds-form-element__label" value="{!SiteURL}" rendered="{!isRecordExist && !isUpdate}"/>
+                                                <apex:inputText styleClass="slds-input"  value="{!SiteURL}" rendered="{!!isRecordExist || isUpdate}"/>
+                                            </div>                                            
+                                        </div>
+                                        <div class="slds-form-element__row">
+                                            <div class="slds-form-element slds-size_1-of-2" >
+                                                <c:SFZoom_Label_Help_Text label="{!HTMLENCODE($Label.Enforce_Login)}" helpText="{!HTMLENCODE($Label.Enforce_Login_Help_Text)}" />
+                                                <apex:inputCheckbox value="{!enforceLogin}" disabled="{!isRecordExist && !isUpdate}"/>
+                                            </div>
+                                            <div class="slds-form-element slds-size_1-of-2">
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            
+                            <fieldset class="slds-form-element slds-form_compound slds-border-around slds-p-around_medium slds-m-bottom_small">
+                                <legend class="slds-p-left_x-small slds-p-right_x-small">{!HTMLENCODE($Label.Meeting_Settings)}</legend>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__group">
+                                        <div class="slds-form-element__row">
+                                            <div class="slds-form-element slds-size_1-of-2">
+                                                <c:SFZoom_Label_Help_Text isRequired="{!!isRecordExist || isUpdate}" label="{!HTMLENCODE($Label.Minimum_Meeting_Duration_Label)}" helpText="{!HTMLENCODE($Label.Minimum_Meeting_Duration_Help_Text)}" />
+                                                <apex:outputText styleClass="slds-form-element__label" value="{!minimumMeetingDuration}" rendered="{!isRecordExist && !isUpdate}"/>
+                                                <apex:inputText styleClass="slds-input" value="{!minimumMeetingDuration}" rendered="{!!isRecordExist || isUpdate}" />
+                                            </div>
+                                            <div class="slds-form-element slds-size_1-of-2">
+                                                <c:SFZoom_Label_Help_Text isRequired="{!!isRecordExist || isUpdate}" label="{!HTMLENCODE($Label.Maximum_Meeting_Duration_Label)}" helpText="{!HTMLENCODE($Label.Maximum_Meeting_Duration_Help_Text)}" />
+                                                <apex:outputText styleClass="slds-form-element__label" value="{!maximumMeetingDuration}" rendered="{!isRecordExist && !isUpdate}"/>
+                                                <apex:inputText styleClass="slds-input" rendered="{!!isRecordExist || isUpdate}" value="{!maximumMeetingDuration}" /> 
+                                            </div>
+                                        </div>
+                                        <div class="slds-form-element__row">
+                                            <div class="slds-form-element slds-size_1-of-2">
+                                                <c:SFZoom_Label_Help_Text label="{!HTMLENCODE($Label.Join_before_Host)}" helpText="{!HTMLENCODE($Label.Join_before_Host_Help_Text)}" />
+                                                <apex:inputCheckbox value="{!joinBeforeHost}" disabled="{!isRecordExist && !isUpdate}"/>
+                                            </div>
+                                            
+                                            <div class="slds-form-element slds-size_1-of-2"> 
+                                                <c:SFZoom_Label_Help_Text label="{!HTMLENCODE($Label.Start_Participant_Video_on_Join)}" helpText="{!HTMLENCODE($Label.Start_Participant_Video_on_Join_Help_Text)}" />
+                                                <apex:inputCheckbox value="{!startParticipantVideo}" disabled="{!isRecordExist && !isUpdate}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            
+                            <fieldset class="slds-form-element slds-form_compound slds-border-around slds-p-around_medium">
+                                <legend class="slds-p-left_x-small slds-p-right_x-small">{!HTMLENCODE($Label.Webinar_Settings)}</legend>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__group">
+                                        <div class="slds-form-element__row">
+                                            <div class="slds-form-element slds-size_1-of-2">
+                                                <c:SFZoom_Label_Help_Text label="{!HTMLENCODE($Label.Join_From_Multiple_Devices_Label)}" helpText="{!HTMLENCODE($Label.Join_From_Multiple_Device_Help_Text)}" />
+                                                <apex:inputCheckbox value="{!allowMultipleDevices}" disabled="{!isRecordExist && !isUpdate}"/>
+                                            </div>
+                                            <div class="slds-form-element slds-size_1-of-2">
+                                                <c:SFZoom_Label_Help_Text label="{!HTMLENCODE($Label.Default_to_HD_Video_Label)}" helpText="{!HTMLENCODE($Label.Defaults_to_HD_Video_Help_Text)}" />
+                                                <apex:inputCheckbox value="{!defaultsToHDVideo}" disabled="{!isRecordExist && !isUpdate}"/>
+                                            </div>
+                                        </div>
+                                        <div class="slds-form-element__row">
+                                            <div class="slds-form-element slds-size_1-of-2">
+                                                <c:SFZoom_Label_Help_Text label="{!HTMLENCODE($Label.Start_Video_When_Host_Joins_Webinar_Label)}" helpText="{!HTMLENCODE($Label.Start_video_when_host_joins_webinar_Help_Text)}" />
+                                                <apex:inputCheckbox value="{!startVideoWhenHostJoin}" disabled="{!isRecordExist && !isUpdate}"/>
+                                            </div>
+                                            <div class="slds-form-element slds-size_1-of-2">
+                                                <c:SFZoom_Label_Help_Text label="{!HTMLENCODE($Label.Start_Video_When_Panelists_Join_Webinar_Label)}" helpText="{!HTMLENCODE($Label.Start_Video_When_Panelists_Join_Webinar_Help_Text)}" />
+                                                <apex:inputCheckbox value="{!startVideoWhenPanelistJoin}" disabled="{!isRecordExist && !isUpdate}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            
+                            <!--EMAIL NOTIFICATION SECTION START-->
+                            <fieldset class="slds-form-element slds-form_compound slds-border-around slds-p-around_medium slds-m-top--small">
+                                <legend class="slds-p-left_x-small slds-p-right_x-small">{!HTMLENCODE($Label.Email_Notification_Settings_Label)}</legend>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__group">
+                                        <div class="slds-form-element__row">
+                                            <div class="slds-form-element slds-size_1-of-2">
+                                                <c:SFZoom_Label_Help_Text label="{!HTMLENCODE($Label.Thankyou_Email_Notification)}" 
+                                                                          helpText="{!HTMLENCODE($Label.Thank_you_email_notification_Helper_text)}" />
+                                                <apex:inputCheckbox value="{!thankYouEmailNotification}" disabled="{!isRecordExist && !isUpdate}">
+                                                    <apex:actionSupport event="onchange" reRender="zoomSetting"  status="ZoomCallStatus" action="{!resetThankYouSetting}"/>
+                                                </apex:inputCheckbox>
+                                            </div>
+                                            <div class="slds-form-element slds-size_1-of-2">
+                                                <c:SFZoom_Label_Help_Text label="{!HTMLENCODE($Label.Share_Recording_URL_Label)}" 
+                                                                          helpText="{!HTMLENCODE($Label.Share_Recording_URL_Helptext)}" />
+                                                <apex:inputCheckbox value="{!shareRecordingURL}" disabled="{!(isRecordExist && !isUpdate) || (!thankYouEmailNotification)}" />
+                                            </div>
+                                        </div>
+                                        <div class="slds-form-element__row">
+                                            <div class="slds-form-element slds-size_1-of-2">
+                                                <c:SFZoom_Label_Help_Text label="{!HTMLENCODE($Label.Share_Survey_Link_Label)}" 
+                                                                          helpText="{!HTMLENCODE($Label.Share_Survey_Link_Helptext)}" />
+                                                <apex:inputCheckbox value="{!shareSurveyLink}" disabled="{!(isRecordExist && !isUpdate) || (!thankYouEmailNotification)}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <!--EMAIL NOTIFICATION SECTION END-->
+                            
+                            <div class="slds-col slds-form slds-p-bottom_small slds-align_absolute-center">
+                                <apex:pageBlockButtons location="bottom" >
+                                    <apex:commandButton value="{!HTMLENCODE($Label.Save_Zoom_Settings)}" action="{!SaveConfigurationDetails}" status="ZoomCallStatus"
+                                                        rendered="{!!isRecordExist || isUpdate}" styleClass="slds-button slds-button_neutral" reRender="zoom-config,zoomConfigForm_Lightning"/>
+                                    <apex:commandButton value="{!HTMLENCODE($Label.Edit_Zoom_Settings)}" action="{!EditConfigurationDetails}" status="ZoomCallStatus"
+                                                        rendered="{!isRecordExist && !isUpdate}" styleClass="slds-button slds-button_neutral" reRender="zoom-config,zoomConfigForm_Lightning"/>
+                                    <apex:commandButton value="{!HTMLENCODE($Label.Cancel_Zoom_Settings)}" action="{!CancelConfigurationDetails}" status="ZoomCallStatus"
+                                                        rendered="{!!isRecordExist || isUpdate}" reRender="zoom-config,zoomConfigForm_Lightning" styleClass="slds-button slds-button_neutral"/>
+                                </apex:pageBlockButtons>
+                                
+                            </div>
+                        </apex:pageBlock>
+                    </div>
+                </article>
+            </div>
+        </apex:pageBlock>
+        <!--LIGHTNING CODE BLOCK END-->
+        
+        <!--VF PAGE CODE BLOCK START-->
+        <apex:pageBlock rendered="{!!lightningDesktop}" mode="edit" title="{!HTMLENCODE($Label.Zoom_Setting_Page_Title)}" id="zoomConfigForm_Classic" >
+            
+            <apex:pageBlockSection id="configSetting" title="{!HTMLENCODE($Label.API_Settings)}" columns="2">
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Zoom_API_Key_Help_Text)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Zoom_API_Key)}</apex:outputLabel>
+                    <apex:panelGroup styleClass="col02 requiredInput" layout="block">
+                        <apex:panelGroup styleClass="requiredBlock" layout="block" rendered="{!!isRecordExist || isUpdate}"/>
+                        <apex:inputText value="{!zoomAPIKey}" rendered="{!!isRecordExist || isUpdate}"/>
+                        <apex:outputText value="{!zoomAPIKey}" rendered="{!isRecordExist && !isUpdate}"></apex:outputText>
+                    </apex:panelGroup>                  
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Zoom_API_Secret_Help_Text)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Zoom_API_Secret)}</apex:outputLabel> 
+                    <apex:panelGroup styleClass="col02 requiredInput" layout="block" >
+                        <apex:panelGroup styleClass="requiredBlock" layout="block" rendered="{!!isRecordExist || isUpdate}"/>
+                        <apex:inputText value="{!ZoomAPISecret}" rendered="{!!isRecordExist || isUpdate}"/>
+                        <apex:outputText value="{!ZoomAPISecret}" rendered="{!isRecordExist && !isUpdate}"></apex:outputText>
+                    </apex:panelGroup>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Zoom_URL_Help_Text)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Zoom_URL)}</apex:outputLabel>
+                    <apex:panelGroup styleClass="col02 requiredInput" layout="block">
+                        <apex:panelGroup styleClass="requiredBlock" layout="block" rendered="{!!isRecordExist || isUpdate}"/>
+                        <apex:inputText value="{!ZoomURL}" rendered="{!!isRecordExist || isUpdate}"/>
+                        <apex:outputText value="{!ZoomURL}" rendered="{!isRecordExist && !isUpdate}"></apex:outputText>
+                    </apex:panelGroup>
+                </apex:pageBlockSectionItem> 
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Zoom_User_Email_Help_Text)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Zoom_User_Email)}</apex:outputLabel> 
+                    <apex:panelGroup styleClass="col02 requiredInput" layout="block" >
+                        <apex:panelGroup styleClass="requiredBlock" layout="block" rendered="{!!isRecordExist || isUpdate}"/>
+                        <apex:inputText value="{!ZoomUserEmail}" rendered="{!!isRecordExist || isUpdate}"/>
+                        <apex:outputText value="{!ZoomUserEmail}" rendered="{!isRecordExist && !isUpdate}"></apex:outputText>
+                    </apex:panelGroup>
+                </apex:pageBlockSectionItem>
+                
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection id="genericSetting" title="{!HTMLENCODE($Label.Generic_Settings)}" columns="2">
+                               
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.SF_Site_URL_Help_Text)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.SF_Site_URL)}</apex:outputLabel>
+                    <apex:panelGroup styleClass="col02 requiredInput" layout="block" >
+                        <apex:panelGroup styleClass="requiredBlock" layout="block" rendered="{!!isRecordExist || isUpdate}"/>
+                        <apex:inputText value="{!SiteURL}" rendered="{!!isRecordExist || isUpdate}"/>
+                        <apex:outputText value="{!SiteURL}" rendered="{!isRecordExist && !isUpdate}"></apex:outputText>
+                    </apex:panelGroup>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Event_Invitation_Email_Sender_Name_Help_Text)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Event_Invitation_Email_Sender_Name)}</apex:outputLabel>
+                    <apex:panelGroup styleClass="col02 requiredInput" layout="block" >
+                        <apex:panelGroup styleClass="requiredBlock" layout="block" rendered="{!!isRecordExist || isUpdate}"/>
+                        <apex:inputText value="{!emailSenderName}" rendered="{!!isRecordExist || isUpdate}"/>
+                        <apex:outputText value="{!emailSenderName}" rendered="{!isRecordExist && !isUpdate}"></apex:outputText>
+                    </apex:panelGroup>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Enforce_Login_Help_Text)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Enforce_Login)}</apex:outputLabel>
+                    <apex:inputCheckbox value="{!enforceLogin}" disabled="{!isRecordExist && !isUpdate}"/>
+                </apex:pageBlockSectionItem>          
+            </apex:pageBlockSection> 
+            
+            <apex:pageBlockSection id="meeting-settings" title="{!HTMLENCODE($Label.Meeting_Settings)}" columns="2">
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Minimum_Meeting_Duration_Help_Text)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Minimum_Meeting_Duration_Label)}</apex:outputLabel>
+                    <apex:panelGroup >
+                        <apex:outputText value="{!minimumMeetingDuration}" rendered="{!isRecordExist && !isUpdate}"/>
+                        <apex:panelGroup styleClass="col02 requiredInput" layout="block">
+                            <apex:panelGroup layout="block" styleClass="requiredBlock"/>
+                            <apex:inputText value="{!minimumMeetingDuration}" rendered="{!!isRecordExist || isUpdate}" />
+                        </apex:panelGroup>
+                    </apex:panelGroup>
+                    
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Maximum_Meeting_Duration_Help_Text)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Maximum_Meeting_Duration_Label)}</apex:outputLabel>
+                    <apex:panelGroup >
+                        <apex:outputText value="{!maximumMeetingDuration}" rendered="{!isRecordExist && !isUpdate}"/>
+                        <apex:panelGroup styleClass="col02 requiredInput" layout="block">
+                            <apex:panelGroup layout="block" styleClass="requiredBlock"/>         
+                            <apex:inputText value="{!maximumMeetingDuration}" rendered="{!!isRecordExist || isUpdate}" />
+                        </apex:panelGroup>
+                    </apex:panelGroup>
+                    
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Join_before_Host_Help_Text)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Join_before_Host)}</apex:outputLabel>
+                    <apex:inputCheckbox value="{!joinBeforeHost}" disabled="{!isRecordExist && !isUpdate}"/>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Start_Participant_Video_on_Join_Help_Text)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Start_Participant_Video_on_Join)}</apex:outputLabel>
+                    <apex:inputCheckbox value="{!startParticipantVideo}" disabled="{!isRecordExist && !isUpdate}"/>
+                </apex:pageBlockSectionItem>
+                
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection id="webinar-settings" title="{!HTMLENCODE($Label.Webinar_Settings)}" columns="2">
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Join_From_Multiple_Device_Help_Text)}">
+                    <apex:outputLabel value="{!HTMLENCODE($Label.Join_From_Multiple_Devices_Label)}" />
+                    <apex:inputCheckbox value="{!allowMultipleDevices}" disabled="{!isRecordExist && !isUpdate}"/>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Defaults_to_HD_Video_Help_Text)}">
+                    <apex:outputLabel escape="false" value="{!HTMLENCODE($Label.Default_to_HD_Video_Label)}"/>
+                    <apex:inputCheckbox value="{!defaultsToHDVideo}" disabled="{!isRecordExist && !isUpdate}"/>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Start_video_when_host_joins_webinar_Help_Text)}">
+                    <apex:outputLabel value="{!HTMLENCODE($Label.Start_Video_When_Host_Joins_Webinar_Label)}" />
+                    <apex:inputCheckbox value="{!startVideoWhenHostJoin}" disabled="{!isRecordExist && !isUpdate}"/>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Start_Video_When_Panelists_Join_Webinar_Help_Text)}"> 
+                    <apex:outputLabel value="{!HTMLENCODE($Label.Start_Video_When_Panelists_Join_Webinar_Label)}" />
+                    <apex:inputCheckbox value="{!startVideoWhenPanelistJoin}" disabled="{!isRecordExist && !isUpdate}"/>
+                </apex:pageBlockSectionItem>
+                
+            </apex:pageBlockSection>  
+            
+            <apex:pageBlockSection id="emailSettings" title="{!HTMLENCODE($Label.Email_Notification_Settings_Label)}" columns="2">
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Thank_you_email_notification_Helper_text)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Thankyou_Email_Notification)}</apex:outputLabel>
+                    <apex:inputCheckbox value="{!thankYouEmailNotification}" disabled="{!isRecordExist && !isUpdate}" >
+                        <apex:actionSupport event="onchange" action="{!resetThankYouSetting}" reRender="zoomConfigForm_Classic" />
+                    </apex:inputCheckbox>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Share_Recording_URL_Helptext)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Share_Recording_URL_Label)}</apex:outputLabel>
+                    <apex:inputCheckbox value="{!shareRecordingURL}" disabled="{!(isRecordExist && !isUpdate) || (!thankYouEmailNotification)}" />
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Share_Survey_Link_Helptext)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Share_Survey_Link_Label)}</apex:outputLabel>
+                    <apex:inputCheckbox value="{!shareSurveyLink}" disabled="{!(isRecordExist && !isUpdate) || (!thankYouEmailNotification)}" />
+                </apex:pageBlockSectionItem>      
+                            
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockButtons location="bottom" styleClass="slds-align_absolute-center">
+                <apex:commandButton value="{!HTMLENCODE($Label.Save_Zoom_Settings)}" action="{!SaveConfigurationDetails}"
+                                    rendered="{!!isRecordExist || isUpdate}" reRender="zoom-config,zoomConfigForm_Classic" status="ZoomCallStatus"/>
+                <apex:commandButton value="{!HTMLENCODE($Label.Edit_Zoom_Settings)}" action="{!EditConfigurationDetails}"
+                                    rendered="{!isRecordExist && !isUpdate}" reRender="zoom-config,zoomConfigForm_Classic" status="ZoomCallStatus"/>
+                <apex:commandButton value="{!HTMLENCODE($Label.Cancel_Zoom_Settings)}" action="{!CancelConfigurationDetails}"
+                                    rendered="{!!isRecordExist || isUpdate}" reRender="zoom-config,zoomConfigForm_Classic" status="ZoomCallStatus"/>
+            </apex:pageBlockButtons>
+            
+        </apex:pageBlock>
+        <!--VF PAGE CODE BLOCK END-->
+
+    </apex:form>
+</apex:page>

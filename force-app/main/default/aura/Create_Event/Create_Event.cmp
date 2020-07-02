@@ -1,0 +1,12 @@
+<aura:component implements="lightning:hasPageReference,force:hasRecordId,force:lightningQuickActionWithoutHeader,flexipage:availableForRecordHome,lightning:actionOverride" access="global">
+    
+    <aura:attribute name="eventObj" type="Map" default="{}" />
+    <aura:attribute type="Map" name="errorResult" default="{}" />
+    <aura:attribute name="initializationDone" type="Boolean" default="false" />
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}" />    
+    
+    <aura:if isTrue="{!v.initializationDone}">
+        <c:Zoom_Event_Manager recordId="" parentId="{!v.recordId}" eventObj="{!v.eventObj}" errorResult="{!v.errorResult}"/>
+    </aura:if>
+    
+</aura:component>

@@ -1,0 +1,52 @@
+<aura:component >
+    
+    <aura:attribute name="lstAttendees" type="List" default="[]" />
+    <!--aura:attribute name="isDisabled" type="Boolean" default="false" /-->
+    <aura:attribute name="allowSelection" type="Boolean" default="true" />
+    <aura:attribute name="selectAll" type="Boolean" default="true" />
+    
+    <table class="slds-border_left slds-border_right slds-table member-table slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_col-bordered">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <aura:if isTrue="{!v.allowSelection}">
+                    <th class="slds-text-title_caps" scope="col">
+                        <div class="slds-truncate strong" title="Select All">
+                            <lightning:input type="checkbox" onchange="{!c.manageSelection}" checked="{!v.selectAll}" value="{!v.selectAll}" />
+                        </div>
+                    </th>
+                </aura:if>
+                <th class="slds-text-title_caps" scope="col">
+                    <div class="slds-truncate strong" title="Name">Name</div>
+                </th>
+                <th class="slds-text-title_caps" scope="col">
+                    <div class="slds-truncate strong" title="Email">Email</div>
+                </th>
+                <th class="slds-text-title_caps" scope="col">
+                    <div class="slds-truncate strong" title="Contact/Lead">Contact/Lead</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.lstAttendees}" var="attendee">
+                <tr class="slds-hint-parent">
+                    <aura:if isTrue="{!v.allowSelection}">
+                        <th data-label="" scope="row">
+                            <div class="slds-truncate" title="{!attendee.isSelected}">                                                
+                                <lightning:input type="checkbox" onchange="{!c.manageSingleSelection}" checked="{!attendee.isSelected}" value="{!attendee.isSelected}" />
+                            </div>
+                        </th>
+                    </aura:if>
+                    <td data-label="Name">
+                        <div class="slds-truncate" title="{!attendee.Name}">{!attendee.name}</div>
+                    </td>
+                    <td data-label="Email">
+                        <div class="slds-truncate" title="{!attendee.Email}">{!attendee.email}</div>
+                    </td>
+                    <td data-label="Contact/Lead">
+                        <div class="slds-truncate" title="{!attendee.type}">{!attendee.type}</div>
+                    </td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+</aura:component>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>It is used to send post meeting mail to attendees.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Thank You Email Notification Template</name>
+    <style>none</style>
+    <subject>Thank you for your presence for the meeting.</subject>
+    <textOnly>Dear {AttendeeName},
+
+Please find the below meeting details:
+
+Meeting Name: {0}
+
+Event Type: {0}
+
+Event Topic: {0}
+
+Survey Link Url: {0} 
+
+Recording Link Url: {0} 
+
+Thank you for attending the meeting.
+
+Regards,
+Meeting/Webinar Organizer</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Webinar</fullName>
+    <active>true</active>
+    <description>It creates a webinar in the Zoom and contains all the information related to the webinar</description>
+    <label>Webinar</label>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>CREATED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ENDED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JBH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JOIN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RECORDING_MEETING_COMPLETED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STARTED</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Time_Zone__c</picklist>
+        <values>
+            <fullName>%28GMT%2B00%3A00%29 Greenwich Mean Time %28Europe%2FDublin%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B00%3A00%29 Greenwich Mean Time %28GMT%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B00%3A00%29 Western European Time %28Europe%2FLisbon%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B00%3A00%2F%2B1%3A00%29 Greenwich Mean Time %2F British Standard Time %28Europe%2FLondon%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B01%3A00%29 Central European Time %28Africa%2FAlgiers%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B01%3A00%29 Central European Time %28Europe%2FAmsterdam%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B01%3A00%29 Central European Time %28Europe%2FBerlin%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B01%3A00%29 Central European Time %28Europe%2FBrussels%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B01%3A00%29 Central European Time %28Europe%2FParis%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B01%3A00%29 Central European Time %28Europe%2FPrague%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B01%3A00%29 Central European Time %28Europe%2FRome%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B02%3A00%29 Eastern European Time %28Africa%2FCairo%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B02%3A00%29 Eastern European Time %28Europe%2FAthens%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B02%3A00%29 Eastern European Time %28Europe%2FBucharest%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B02%3A00%29 Eastern European Time %28Europe%2FHelsinki%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B02%3A00%29 Israel Standard Time %28Asia%2FJerusalem%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B02%3A00%29 South Africa Standard Time %28Africa%2FJohannesburg%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B03%3A00%29 Arabia Standard Time %28Asia%2FBaghdad%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B03%3A00%29 Arabia Standard Time %28Asia%2FKuwait%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B03%3A00%29 Arabia Standard Time %28Asia%2FRiyadh%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B03%3A00%29 Eastern African Time %28Africa%2FNairobi%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B03%3A00%29 Eastern European Time %28Europe%2FIstanbul%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B03%3A00%29 Moscow Standard Time %28Europe%2FMinsk%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B03%3A00%29 Moscow Standard Time %28Europe%2FMoscow%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B03%3A30%29 Iran Standard Time %28Asia%2FTehran%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B04%3A00%29 Georgia Time %28Asia%2FTbilisi%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B04%3A00%29 Gulf Standard Time %28Asia%2FDubai%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B04%3A30%29 Afghanistan Time %28Asia%2FKabul%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B05%3A00%29 Pakistan Time %28Asia%2FKarachi%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B05%3A00%29 Uzbekistan Time %28Asia%2FTashkent%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B05%3A00%29 Yekaterinburg Time %28Asia%2FYekaterinburg%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B05%3A30%29 India Standard Time %28Asia%2FColombo%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B05%3A30%29 India Standard Time %28Asia%2FKolkata%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B05%3A45%29 Nepal Time %28Asia%2FKathmandu%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B06%3A00%29 Bangladesh Time %28Asia%2FDhaka%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B06%3A30%29 Myanmar Time %28Asia%2FRangoon%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B07%3A00%29 Indochina Time %28Asia%2FBangkok%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B07%3A00%29 Indochina Time %28Asia%2FHo_Chi_Minh%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B07%3A00%29 West Indonesia Time %28Asia%2FJakarta%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B08%3A00%29 Australian Western Standard Time %28Australia%2FPerth%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B08%3A00%29 China Standard Time %28Asia%2FShanghai%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B08%3A00%29 China Standard Time %28Asia%2FTaipei%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B08%3A00%29 Hong Kong Time %28Asia%2FHong_Kong%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B08%3A00%29 Malaysia Time %28Asia%2FKuala_Lumpur%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B08%3A00%29 Philippines Time %28Asia%2FManila%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B08%3A00%29 Singapore Time %28Asia%2FSingapore%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B09%3A00%29 Japan Standard Time %28Asia%2FTokyo%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B09%3A00%29 Korea Standard Time %28Asia%2FSeoul%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B09%3A30%29 Australian Central Standard Time %28Northern Territory%29 %28Australia%2FDarwin%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B10%3A00%2F%2B11%3A00%29 Australian Eastern Standard %2F Daylight Time %28New South Wales%29 %28Australia%2FSydney%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B10%3A30%2F%2B11%3A00%29 Lord Howe Standard %2F Daylight Time %28Australia%2FLord_Howe%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B10%3A30%2F%2B9%3A30%29 Australian Central Standard %2F Daylight Time %28South Australia%29 %28Australia%2FAdelaide%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B11%3A00%29 Norfolk Time %28Pacific%2FNorfolk%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B11%3A00%29 Solomon Is%2E Time %28Pacific%2FGuadalcanal%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B12%3A00%29 Fiji Time %28Pacific%2FFiji%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B12%3A00%29 Petropavlovsk-Kamchatski Time %28Asia%2FKamchatka%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B12%3A00%2F%2B13%3A00%29 New Zealand Standard %2F Daylight Time %28Pacific%2FAuckland%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B12%3A45%2F%2B13%3A45%29 Chatham Standard %2F Daylight Time %28Pacific%2FChatham%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B13%3A00%29 Phoenix Is%2E Time %28Pacific%2FEnderbury%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B13%3A00%29 Tonga Time %28Pacific%2FTongatapu%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT%2B14%3A00%29 Line Is%2E Time %28Pacific%2FKiritimati%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-01%3A00%29 Cape Verde Time %28Atlantic%2FCape_Verde%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-02%3A00%29 South Georgia Standard Time %28Atlantic%2FSouth_Georgia%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-02%3A30%2F-3%3A30%29 Newfoundland Standard %2F Daylight Time %28America%2FSt_Johns%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-03%3A00%29 Argentine Time %28America%2FArgentina%2FBuenos_Aires%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-03%3A00%29 Brasilia Time %28America%2FSao_Paulo%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-03%3A00%29 Chile Summer Time %28America%2FSantiago%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-04%3A00%29 Atlantic Standard Time %28America%2FPuerto_Rico%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-04%3A00%29 Venezuela Time %28America%2FCaracas%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-04%3A00%2F-3%3A00%29 Atlantic Standard %2F Daylight Time %28America%2FHalifax%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-05%3A00%29 Colombia Time %28America%2FBogota%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-05%3A00%29 Eastern Standard Time %28America%2FPanama%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-05%3A00%29 Peru Time %28America%2FLima%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-06%3A00%29 Central Standard Time %28America%2FEl_Salvador%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-06%3A00%29 Central Standard Time %28America%2FMexico_City%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-07%3A00%29 Mountain Standard Time %28America%2FPhoenix%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-08%3A00%2F-7%3A00%29 Pacific Standard %2F Daylight Time %28America%2FLos_Angeles%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-10%3A00%29 Hawaii-Aleutian Standard Time %28Pacific%2FHonolulu%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-11%3A00%29 Niue Time %28Pacific%2FNiue%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-11%3A00%29 Samoa Standard Time %28Pacific%2FPago_Pago%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-4%3A00%2F-03%3A00%29 Atlantic Standard %2F Daylight Time %28Atlantic%2FBermuda%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-5%3A00%2F-04%3A00%29 Eastern Standard %2F Daylight Time %28America%2FIndiana%2FIndianapolis%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-5%3A00%2F-04%3A00%29 Eastern Standard %2F Daylight Time %28America%2FNew_York%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-6%3A00%2F-05%3A00%29 Central Standard %2F Daylight Time %28America%2FChicago%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-7%3A00%2F-06%3A00%29 Mountain Standard %2F Daylight Time %28America%2FDenver%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-8%3A00%2F-07%3A00%29 Pacific Standard %2F Daylight Time %28America%2FTijuana%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%28GMT-9%3A00%2F-08%3A00%29 Alaska Standard %2F Daylight Time %28America%2FAnchorage%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

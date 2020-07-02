@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Start_Participant_Video_on_Meeting_Join__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Start video when participants join meeting</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Start video when participants join meeting</inlineHelpText>
+    <label>Start Participant Video on Meeting Join</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

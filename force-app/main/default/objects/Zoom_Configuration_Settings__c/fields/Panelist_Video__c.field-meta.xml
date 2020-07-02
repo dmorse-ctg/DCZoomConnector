@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Panelist_Video__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>It tells that start the video when panelists join the webinar</description>
+    <externalId>false</externalId>
+    <inlineHelpText>It tells that start the video when panelists join the webinar</inlineHelpText>
+    <label>Panelist Video</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

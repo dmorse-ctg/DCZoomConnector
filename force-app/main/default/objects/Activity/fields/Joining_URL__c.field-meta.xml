@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Joining_URL__c</fullName>
+    <description>It contains the unique joining URL value of the meeting for every invitee</description>
+    <externalId>false</externalId>
+    <inlineHelpText>It contains the unique joining URL value of the meeting for every invitee</inlineHelpText>
+    <label>Joining URL</label>
+    <required>false</required>
+    <type>Url</type>
+</CustomField>

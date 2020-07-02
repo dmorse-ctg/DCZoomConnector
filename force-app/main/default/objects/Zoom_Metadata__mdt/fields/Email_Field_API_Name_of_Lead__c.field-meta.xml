@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_Field_API_Name_of_Lead__c</fullName>
+    <description>It contains the API name of the email field which would be used to send the Event invitation email to all the attendee. These field name must be taken from Lead</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>It contains the API name of the email field which would be used to send the Event invitation email to all the attendee. These field name must be taken from Lead</inlineHelpText>
+    <label>Email Field API Name of Lead</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

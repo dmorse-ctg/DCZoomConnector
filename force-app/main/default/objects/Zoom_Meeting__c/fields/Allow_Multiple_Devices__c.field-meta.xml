@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Allow_Multiple_Devices__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>It Allows attendees to join from multiple devices</description>
+    <externalId>false</externalId>
+    <inlineHelpText>It Allows attendees to join from multiple devices</inlineHelpText>
+    <label>Allow Multiple Devices</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

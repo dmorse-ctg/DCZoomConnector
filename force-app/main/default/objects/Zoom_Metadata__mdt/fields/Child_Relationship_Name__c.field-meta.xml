@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Child_Relationship_Name__c</fullName>
+    <description>It contains the value of the child relationship which is mentioned while creating the relationship field</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>It contains the value of the child relationship which is mentioned while creating the relationship field.</inlineHelpText>
+    <label>Child Relationship Name</label>
+    <length>255</length>
+    <required>true</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

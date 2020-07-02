@@ -1,0 +1,19 @@
+Dear {AttendeeName}, <br/> <br/>
+
+Please find the below meeting details:<br/><br/>
+
+Meeting Name: {0} <br/>
+
+Event Type: {0} <br/>
+
+Event Topic: {0} <br/>
+
+Recording Link Url: {0} <br/><br/>
+
+Survey Link Url: {0} <br/><br/>
+
+Thank you for attending the meeting. <br/><br/>
+
+
+Regards,<br/>
+Meeting/Webinar Organizer

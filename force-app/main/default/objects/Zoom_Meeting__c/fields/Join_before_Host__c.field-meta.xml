@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Join_before_Host__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>It stores whether the invitee can join the meeting before the host</description>
+    <externalId>false</externalId>
+    <inlineHelpText>It stores whether the invitee can join the meeting before the host</inlineHelpText>
+    <label>Join before Host</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

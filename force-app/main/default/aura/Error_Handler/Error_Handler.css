@@ -1,0 +1,38 @@
+.THIS div.error {
+    color: rgb(255, 255, 255);
+    line-height: 1.25;
+    font-weight: 300;
+    font-size: .9rem;
+}
+
+.THIS .slds-box .slds-icon_small{
+    fill: rgb(255, 255, 255);
+    width: 1rem;
+    height: 1rem;
+    vertical-align: -3px;
+}
+
+.THIS .slds-theme-success{
+    background: green;
+}
+
+.THIS .slds-theme-error{
+    background: rgb(194, 57, 52);
+}
+
+.THIS strong.close{
+    cursor: pointer
+}
+
+.THIS.slds-fade-in {
+    animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

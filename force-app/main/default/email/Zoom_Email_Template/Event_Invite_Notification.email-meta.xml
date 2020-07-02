@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>It is used to send event invite notification for the meeting/webinar.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Event Invite Notification</name>
+    <style>none</style>
+    <subject>Event Notification</subject>
+    <textOnly>Dear inviteeName,  
+
+You are invited to this event. 
+
+Please see the meeting details below.  
+Meeting/Webinar Details:      
+
+
+Regards,
+Meeting/Webinar Organizer</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

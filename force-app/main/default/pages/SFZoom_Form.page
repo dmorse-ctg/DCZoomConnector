@@ -1,0 +1,239 @@
+<!-- 
+    The MIT License
+    Copyright © 2020 DataColada Pty Ltd
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+-->
+<apex:page standardController="Zoom_Meeting__c" extensions="SFZoom_MeetingHandlerExtension" docType="html-5.0" sidebar="false" lightningStylesheets="true" action="{!VerifyDeleteOperation}">
+
+    <apex:stylesheet value="{!URLFOR($Resource.SFZoom_Resource, 'css/SFZoom_CSS.css')}"/>
+    
+    <apex:actionstatus id="ZoomCallStatus">
+        <apex:facet name="start">
+            <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; height:100%;opacity:0.65;width:100%;">
+                <div class="waitingHolder" style="top: 100px; width: 91px;">
+                    <img class="waitingImage" src="/img/loading.gif" title="{!HTMLENCODE($Label.Action_Status_Waiting_Text)}" />
+                    <span class="waitingDescription">{!HTMLENCODE($Label.Action_Status_Waiting_Description_Text)}</span>
+                </div>
+            </div>
+        </apex:facet>
+    </apex:actionstatus>
+    
+    <apex:form styleClass="meeting-form" id="zoomEventForm" >
+        <apex:pageMessages escape="false" id="pageErrorMsg"/>
+        <apex:PageBlock id="meetingForm_Classic" title="{!IF(!isEditEnabled, HTMLENCODE($Label.Meeting_Creation_Header), HTMLENCODE($Label.Update_Meeting_Header))} {!IF(eventType == $Label.Meeting_Record_Type_Name, HTMLENCODE($Label.Meeting_Record_Type_Name), HTMLENCODE($Label.Webinar_Record_Type_Name))} " rendered="{!isZoomSettingConfigured}">
+            
+            <apex:pageBlockButtons location="bottom" rendered="{!!isMeetingCreated && !isEditEnabled}">
+            
+                <apex:commandButton value="{!HTMLENCODE($Label.Cancel_Meeting)}" rendered="{!!isMeetingCreated && !isEditEnabled}" >
+                    <apex:actionSupport status="ZoomCallStatus" event="onclick" action="{!CancelOperation}" immediate="true" />
+                </apex:commandButton>
+
+                <apex:commandButton value="{!HTMLENCODE($Label.Create_Meeting)}" action="{!CreateMeetingClassic}" reRender="zoomEventForm"
+                                    status="ZoomCallStatus" rendered="{!!isEditEnabled && !isMeetingCreated && eventType == $Label.Meeting_Record_Type_Name}"/>
+                
+                <apex:commandButton value="{!HTMLENCODE($Label.Create_Webinar)}" action="{!CreateWebinar}" reRender="zoomEventForm"
+                                    status="ZoomCallStatus" rendered="{!!isEditEnabled && !isMeetingCreated && eventType == $Label.Webinar_Record_Type_Name}"/>
+                
+            </apex:pageBlockButtons>
+            
+            <apex:pageblockSection >
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Topic__c.inlineHelpText)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Meeting_Topic)}</apex:outputLabel>
+                    <apex:panelGroup >
+                        <apex:inputField value="{!zoomMeeting.Topic__c}" rendered="{!!isMeetingCreated}"/>
+                        <apex:outputField value="{!zoomMeeting.Topic__c}" rendered="{!isMeetingCreated}"/>
+                    </apex:panelGroup>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Auto_Register__c.inlineHelpText)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Auto_Register)}</apex:outputLabel>
+                    <apex:inputCheckbox value="{!zoomMeeting.Auto_Register__c}" disabled="{!isMeetingCreated}"/> 
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Start_Date__c.inlineHelpText)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Start_Date)}</apex:outputLabel>
+                    <apex:panelGroup >
+                        <apex:inputField value="{!zoomMeeting.Start_Date__c}" rendered="{!!isMeetingCreated}"/>
+                        <apex:outputField value="{!zoomMeeting.Start_Date__c}" rendered="{!isMeetingCreated}"/>
+                    </apex:panelGroup>
+                </apex:pageBlockSectionItem> 
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Start_Time__c.inlineHelpText)}"> 
+                    <apex:outputLabel >{!HTMLENCODE($Label.Start_Time)}</apex:outputLabel>
+                    <apex:panelGroup >
+                        <apex:outputText value="{!meetingStartTime}" rendered="{!isMeetingCreated}"/>
+                        <apex:panelGroup styleClass="col02 requiredInput" layout="block">
+                            <apex:panelGroup styleClass="requiredBlock" layout="block"/>
+                            <apex:input type="time" value="{!meetingStartTime}" rendered="{!!isMeetingCreated}"/>                            
+                        </apex:panelGroup>                        
+                    </apex:panelGroup>
+                    
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Duration__c.inlineHelpText)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Meeting_Duration)}</apex:outputLabel>
+                    <apex:panelGroup >
+                        <apex:inputField value="{!zoomMeeting.Duration__c}" rendered="{!!isMeetingCreated}"/>
+                        <apex:outputField value="{!zoomMeeting.Duration__c}" rendered="{!isMeetingCreated}"/>
+                    </apex:panelGroup>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Agenda__c.inlineHelpText)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Meeting_Agenda)}</apex:outputLabel>
+                    <apex:panelGroup >
+                        <apex:inputField value="{!zoomMeeting.Agenda__c}" rendered="{!!isMeetingCreated}"/>
+                        <apex:outputField value="{!zoomMeeting.Agenda__c}" rendered="{!isMeetingCreated}"/>
+                    </apex:panelGroup>
+                </apex:pageBlockSectionItem>
+            
+            </apex:pageblockSection>  
+            
+            <apex:pageBlockSection rendered="{!eventType == $Label.Meeting_Record_Type_Name}" id="meeting-setting" columns="2" title="{!HTMLENCODE($Label.Configuration_Setting_Title_Text)}">
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Join_before_Host__c.inlineHelpText)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Join_before_Host)}</apex:outputLabel>
+                    <apex:inputCheckbox value="{!zoomMeeting.Join_before_Host__c}" disabled="{!isMeetingCreated}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Start_Participant_Video_on_Meeting_Join__c.inlineHelpText)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Start_Participant_Video_on_Join)}</apex:outputLabel>
+                    <apex:inputCheckbox value="{!zoomMeeting.Start_Participant_Video_on_Meeting_Join__c}" disabled="{!isMeetingCreated}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Enforce_Login__c.inlineHelpText)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Enforce_Login)}</apex:outputLabel>
+                    <apex:inputCheckbox value="{!zoomMeeting.Enforce_Login__c}" disabled="{!isMeetingCreated}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection> 
+            
+            <apex:pageBlockSection id="thankyoudetails" columns="2" title="{!HTMLENCODE($Label.Notification_Settings_title_text)}">
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Thank_you_notification__c.inlineHelpText)}">
+                    <apex:outputLabel >{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Thank_you_notification__c.Label)}</apex:outputLabel>
+                    <apex:inputCheckbox value="{!zoomMeeting.Thank_you_notification__c}" disabled="{!isMeetingCreated}" >
+                        <apex:actionSupport event="onchange" reRender="meetingForm_Classic" status="ZoomCallStatus" action="{!resetThankYouSetting}"/>
+                    </apex:inputCheckbox>   
+                </apex:pageBlockSectionItem>
+                <br/>
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Share_Survey_Link__c.inlineHelpText)}" >
+                    <apex:outputLabel >{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Share_Survey_Link__c.Label)}</apex:outputLabel>
+                    <apex:inputCheckbox value="{!zoomMeeting.Share_Survey_Link__c}" disabled="{!(!zoomMeeting.Thank_you_notification__c || isMeetingCreated)}"  >
+                        <apex:actionSupport event="onchange" reRender="thankyoudetails" status="ZoomCallStatus" />
+                    </apex:inputCheckbox>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Survey_Link_URL__c.inlineHelpText)}" rendered="{!(zoomMeeting.Share_Survey_Link__c)}" >
+                     <apex:outputLabel rendered="{!(zoomMeeting.Share_Survey_Link__c)}">{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Survey_Link_URL__c.Label)}</apex:outputLabel>
+                   <apex:inputText id="surveyLink" value="{!zoomMeeting.Survey_Link_URL__c}" rendered="{!(zoomMeeting.Share_Survey_Link__c)}" disabled="{!isMeetingCreated}"/>
+                 </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Share_Recording_URL__c.inlineHelpText)}" >
+                    <apex:outputLabel >{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Share_Recording_URL__c.Label)}</apex:outputLabel>
+                    <apex:inputCheckbox value="{!zoomMeeting.Share_Recording_URL__c}" disabled="{!(!zoomMeeting.Thank_you_notification__c || isMeetingCreated)}">
+                        <apex:actionSupport event="onchange" reRender="thankyoudetails" status="ZoomCallStatus"/>
+                    </apex:inputCheckbox>
+                </apex:pageBlockSectionItem>
+                <apex:pageblockSectionItem helpText="{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Meeting_Recording_URL__c.inlineHelpText)}" rendered="{!(zoomMeeting.Share_Recording_URL__c)}" >
+                    <apex:outputLabel rendered="{!(zoomMeeting.Share_Recording_URL__c)}">{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Meeting_Recording_URL__c.Label)}</apex:outputLabel>
+                   <apex:inputText value="{!zoomMeeting.Meeting_Recording_URL__c}" rendered="{!(zoomMeeting.Share_Recording_URL__c)}" disabled="{!isMeetingCreated}"/>
+                </apex:pageblockSectionItem>
+              </apex:pageBlockSection>
+                        
+            <apex:pageBlockSection rendered="{!eventType == $Label.Webinar_Record_Type_Name}" id="webinar-setting" columns="2" title="{!HTMLENCODE($Label.Configuration_Setting_Title_Text)}">
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.HD_Video__c.inlineHelpText)}">
+                    <apex:outputLabel escape="false" value="{!HTMLENCODE($Label.Default_to_HD_Video_Label)}"/>
+                    <apex:inputCheckbox value="{!zoomMeeting.HD_Video__c}" disabled="{!isMeetingCreated}"/>
+                </apex:pageBlockSectionItem>                
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Allow_Multiple_Devices__c.inlineHelpText)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Join_From_Multiple_Devices_Label)}</apex:outputLabel>
+                    <apex:inputCheckbox value="{!zoomMeeting.Allow_Multiple_Devices__c}" disabled="{!isMeetingCreated}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Host_Video__c.inlineHelpText)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Start_Video_When_Host_Joins_Webinar_Label)}</apex:outputLabel>
+                    <apex:inputCheckbox value="{!zoomMeeting.Host_Video__c}" disabled="{!isMeetingCreated}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($ObjectType.Zoom_Meeting__c.fields.Panelist_Video__c.inlineHelpText)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.Start_Video_When_Panelists_Join_Webinar_Label)}</apex:outputLabel>
+                    <apex:inputCheckbox value="{!zoomMeeting.Panelist_Video__c}" disabled="{!isMeetingCreated}"/>
+                </apex:pageBlockSectionItem>                          
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection columns="1" title="{!HTMLENCODE($Label.Manage_Invitee_List)}" rendered="{!!isMeetingCreated && !isEditEnabled}">
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Invite_All_Leads_Contacts_Help_Text)}">
+                    <apex:outputLabel > {!HTMLENCODE($Label.All_Available_Contact_Lead_Invitee_List)}</apex:outputLabel>
+                    <apex:inputCheckbox value="{!isSelectedAllLeadsAndContacts}" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+        </apex:PageBlock>
+        
+        <apex:pageBlock title="{!HTMLENCODE($Label.Manage_Invitees)}" id="inviteeList" rendered="{!(isMeetingCreated || isEditEnabled)}">
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockSectionItem helpText="{!HTMLENCODE($Label.Invite_All_Leads_Contacts_Help_Text)}">
+                    <apex:outputLabel >{!HTMLENCODE($Label.All_Available_Contact_Lead_Invitee_List)}</apex:outputLabel>
+                    <apex:inputCheckbox value="{!isSelectedAllLeadsAndContacts}" >
+                        <apex:actionSupport event="onchange" action="{!SelectAllInvitees}" status="ZoomCallStatus" rerender="inviteeList" />
+                    </apex:inputCheckbox>
+                </apex:pageBlockSectionItem>
+                
+                <apex:tabPanel switchType="client" selectedTab="notInvitedListTab" id="inviteeTabPanel">
+                    <apex:tab label="{!HTMLENCODE($Label.Meeting_Remaining_Attendees_Tab)}" name="notInvitedListTab">
+                        <apex:pageBlockTable value="{!listOfNotInvitedRecordDetails}" var="inviteeDetails" id="notInvitedList">
+                            <apex:column headerValue="#"> 
+                                <apex:inputCheckbox value="{!inviteeDetails.isSelected}" disabled="{!isSelectedAllLeadsAndContacts}"/>
+                            </apex:column>                    
+                            <apex:column value="{!inviteeDetails.name}" headerValue="Name"/>
+                            <apex:column value="{!inviteeDetails.email}" headerValue="Email"/>
+                            <apex:column value="{!inviteeDetails.type}" headerValue="Type"/>
+                        </apex:pageBlockTable>
+                    </apex:tab>
+
+                    <apex:tab label="{!HTMLENCODE($Label.Meeting_Invited_Attendees_Tab)}" name="invitedListTab" rendered="{!If(listOfInvitedRecordDetails.size > 0 , true, false)}">
+                        <apex:pageBlockTable value="{!listOfInvitedRecordDetails}" var="inviteeDetails" id="invitedList">
+                            <apex:column value="{!inviteeDetails.name}" headerValue="Name"/>
+                            <apex:column value="{!inviteeDetails.email}" headerValue="Email"/>
+                            <apex:column value="{!inviteeDetails.type}" headerValue="Type"/>
+                        </apex:pageBlockTable>
+                    </apex:tab>
+
+                </apex:tabPanel>
+                
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom" >
+                <apex:commandButton value="{!HTMLENCODE($Label.Cancel_Meeting)}" action="{!CancelOperation}" immediate="true" status="ZoomCallStatus"
+                rendered="{!isEditEnabled && eventType == $Label.Webinar_Record_Type_Name}">
+                </apex:commandButton>  
+
+                <apex:commandButton value="{!HTMLENCODE($Label.Save_Zoom_Settings)}" action="{!CancelOperation}" reRender="zoomEventForm"
+                            status="ZoomCallStatus" rendered="{!!isEditEnabled}" />
+                            
+                <apex:commandButton value="{!HTMLENCODE($Label.Send_Email_Invite_Button)}" action="{!SendEmailInviteClassic}" reRender="zoomEventForm" status="ZoomCallStatus"/>
+                
+                <apex:commandButton value="{!HTMLENCODE($Label.Update_Webinar_Button_Label)}" action="{!UpdateWebinarDetailsClassic}" reRender="zoomEventForm"
+                            status="ZoomCallStatus" rendered="{!isEditEnabled && eventType == $Label.Webinar_Record_Type_Name}" />
+                            
+                <apex:commandButton value="{!HTMLENCODE($Label.Update_Meeting)}" action="{!UpdateMeetingDetailsClassic}" reRender="zoomEventForm"
+                                    status="ZoomCallStatus" rendered="{!isEditEnabled && eventType == $Label.Meeting_Record_Type_Name}"/>
+                
+                <apex:commandButton value="{!HTMLENCODE($Label.Send_Thank_You_Email)}" action="{!sendThankYouEmail}"
+                                    reRender="zoomEventForm" status="ZoomCallStatus" rendered="{!isEditEnabled}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+
+    </apex:form>
+    
+</apex:page>

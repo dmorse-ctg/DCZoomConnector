@@ -1,0 +1,21 @@
+<aura:component access="global">
+    <aura:attribute type="Map" name="errorResult" default="{message: 'Error Message', type: 'info', collapsable: true}" />  
+    
+    <aura:handler name="change" action="{!c.errorChange}" value="{!v.message}" />
+    
+    <aura:if isTrue="{!!empty(v.errorResult.message)}">
+        <div class="slds-p-bottom_small slds-fade-in">
+            <div class="{!'error slds-p-bottom_small slds-box slds-theme–alert-texture slds-theme-' + v.errorResult.type}">
+                <lightning:icon iconName="{!'utility:'+ v.errorResult.type}" size="small" alternativeText="{!v.errorResult.type}" class="iconContainer"/>
+                <span class="slds-text-body–regular slds-p-left_xx-small">
+                    <aura:unescapedHtml value="{!v.errorResult.message}"/>
+                </span>
+                <aura:if isTrue="{!or(empty(v.errorResult.collapsable), v.errorResult.collapsable)}">
+                    <strong class="slds-float_right slds-text-body–regular close" onclick="{!c.closeToast}">
+                        X    
+                    </strong>
+                </aura:if>
+            </div>
+        </div>
+    </aura:if> 
+</aura:component>

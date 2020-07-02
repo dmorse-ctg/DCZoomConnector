@@ -1,0 +1,305 @@
+<aura:component controller="SFZoom_LightningEventHandler" implements="force:lightningQuickActionWithoutHeader,flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride" access="global">
+    
+    <!--ATTRIBUTES START-->
+    <aura:attribute type="String" name="parentId" />
+    <aura:attribute type="String" name="recordId" />
+    <aura:attribute type="String" name="eventType" />
+    
+    <aura:attribute type="Map" name="eventObj" />
+    <aura:attribute type="Map" name="errorResult" />
+    <aura:attribute type="Map" name="mapRecordType" />
+    <aura:attribute type="Map" name="uiControls" default="{isDMLInProcess: true, isDisabled: false}" />
+    
+    <aura:attribute type="List" name="recordTypes" default="[]" />
+    <aura:attribute type="List" name="attendees" default="[]" />
+    <aura:attribute type="List" name="attended" default="[]" />
+    <aura:attribute type="List" name="newAttendees" default="[]" />
+    
+    
+    <aura:attribute type="Boolean" name="initializationDone" default="false" />
+    <aura:attribute type="Boolean" name="isQuickAction" default="false" />
+    <aura:attribute type="Boolean" name="disableCheckbox" default="false" />
+    <aura:attribute type="Boolean" name="showSurveyUrlError" default="false" />
+    <aura:attribute type="Boolean" name="serviceExecuted" default="false" />
+    <!--ATTRIBUTES END-->
+    
+    <!--HANDLER START-->
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}" />
+    <!--HANDLER END-->
+    
+    <!--MARKUP START-->
+    <aura:if isTrue="{!v.initializationDone}">
+        <aura:html tag="style">
+            .slds-p-around--medium, .cuf-content {
+            padding: 0rem !important;
+            }       
+            .slds-modal__content{
+            overflow-y: auto !important;
+            height: unset !important;
+            max-height: unset !important;
+            }
+        </aura:html>    
+        
+        <div class="modal-header slds-modal__header slds-size_1-of-1">
+            <h4 class="title slds-text-heading--medium">
+                <aura:if isTrue="{!empty(v.eventObj.Id)}">
+                    {!$Label.c.Meeting_Creation_Header}&nbsp;{!v.eventType}
+                    <aura:set attribute="else">
+                        {!$Label.c.Edit_Zoom_Meeting}&nbsp;{!v.eventType}
+                    </aura:set>
+                </aura:if>
+            </h4>
+        </div>
+        
+        <div class="slds-modal__content slds-p-around_medium" aura:id="eventForm">    
+            
+            <c:Error_Handler errorResult="{!v.errorResult}" /> 
+            
+            <aura:if isTrue="{!and(v.isQuickAction, !empty(v.recordTypes))}">
+                <fieldset class="slds-form-element slds-form_compound">
+                    <div class="slds-form-element__control">                
+                        <div class="slds-form-element__group">
+                            <div class="slds-form-element__row slds-p-bottom_xx-small">
+                                <div class="slds-form-element slds-size_1-of-1">
+                                    <lightning:select disabled="{!v.uiControls.isDisabled}" value="{!v.eventType}" label="{!$Label.c.Event_Type_Label}">
+                                        <aura:iteration items="{!v.recordTypes}" var="recordType">
+                                            <option value="{!recordType}">{!recordType}</option>
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </aura:if>
+            
+            <fieldset class="slds-form-element slds-form_compound">
+                <div class="slds-form-element__control">
+                    <div class="slds-form-element__group">
+                        <div class="slds-form-element__row slds-p-bottom_xx-small">
+                            <div class="slds-form-element slds-size_1-of-2">
+                                <lightning:input disabled="{!v.uiControls.isDisabled}" aura:id="eventField" 
+                                                 label="{!$Label.c.Meeting_Topic}" 
+                                                 value="{!v.eventObj.Topic__c}" required="true" />
+                            </div>
+                            
+                            <div class="slds-form-element slds-size_1-of-2 vertical-center">
+                                <lightning:input disabled="{!v.uiControls.isDisabled}" type="checkbox" 
+                                                 label="{!$Label.c.Auto_Register}" 
+                                                 checked="{!v.eventObj.Auto_Register__c}" 
+                                                 value="{!v.eventObj.Auto_Register__c}" />
+                            </div> 
+                            
+                            
+                        </div>
+                        <div class="slds-form-element__row slds-p-bottom_xx-small">
+                            <div class="slds-form-element slds-size_1-of-2">
+                                <lightning:input disabled="{!v.uiControls.isDisabled}" aura:id="eventField" 
+                                                 type="time" label="{!$Label.c.Start_Time}" 
+                                                 value="{!v.eventObj.Start_Time__c}" required="true" />
+                            </div>
+                            <div class="slds-form-element slds-size_1-of-2">
+                                <lightning:input disabled="{!v.uiControls.isDisabled}" aura:id="eventField" 
+                                                 type="number" label="{!$Label.c.Meeting_Duration}" 
+                                                 value="{!v.eventObj.Duration__c}" required="true" />
+                            </div>
+                        </div>
+                        <div class="slds-form-element__row slds-p-bottom_xx-small">
+                            <div class="slds-form-element slds-size_1-of-2">
+                                <lightning:textarea disabled="{!v.uiControls.isDisabled}" 
+                                                    label="{!$Label.c.Meeting_Agenda}" 
+                                                    value="{!v.eventObj.Agenda__c}" />
+                            </div>
+                            <div class="slds-form-element slds-size_1-of-2">
+                                <lightning:input disabled="{!v.uiControls.isDisabled}" aura:id="eventField" 
+                                                 type="date" label="{!$Label.c.Start_Date}" 
+                                                 value="{!v.eventObj.Start_Date__c}" required="true" />
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            
+            <!--MEETING CONFIGURATION SECTION START-->
+            <fieldset class="slds-form-element slds-form_compound">
+                <legend class="slds-form-element__legend slds-form-element__label slds-p-bottom_x-small slds-p-top_x-small">{!v.eventType}&nbsp;{!$Label.c.Configuration_Label}</legend>
+                <div class="slds-form-element__control">                
+                    <div class="slds-form-element__group">
+                        <aura:if isTrue="{!equals(v.eventType, 'Meeting')}">
+                            <div class="slds-form-element__row slds-p-bottom_xx-small">
+                                <div class="slds-form-element slds-size_1-of-2">
+                                    <lightning:input disabled="{!v.uiControls.isDisabled}" type="checkbox" 
+                                                     label="{!$Label.c.Enforce_Login}" 
+                                                     checked="{!v.eventObj.Enforce_Login__c}" 
+                                                     value="{!v.eventObj.Enforce_Login__c}" />
+                                </div>
+                                <div class="slds-form-element slds-size_1-of-2">
+                                    <lightning:input disabled="{!v.uiControls.isDisabled}" type="checkbox" 
+                                                     label="{!$Label.c.Join_before_Host}" 
+                                                     checked="{!v.eventObj.Join_before_Host__c}" 
+                                                     value="{!v.eventObj.Join_before_Host__c}" />
+                                </div>
+                            </div>
+                            <div class="slds-form-element__row slds-p-bottom_xx-small">                                
+                                <div class="slds-form-element slds-size_1-of-2">
+                                    <lightning:input disabled="{!v.uiControls.isDisabled}" type="checkbox" 
+                                                     label="{!$Label.c.Start_Participant_Video_on_Join}" 
+                                                     checked="{!v.eventObj.Start_Participant_Video_on_Meeting_Join__c}" value="{!v.eventObj.Start_Participant_Video_on_Meeting_Join__c}" />
+                                </div>
+                            </div>
+                        </aura:if>
+                        
+                        <aura:if isTrue="{!equals(v.eventType, 'Webinar')}">
+                            <div class="slds-form-element__row slds-p-bottom_xx-small">
+                                <div class="slds-form-element slds-size_1-of-2">
+                                    <lightning:input disabled="{!v.uiControls.isDisabled}" type="checkbox" 
+                                                     label="{!$Label.c.Default_to_HD_Video_Label}" 
+                                                     checked="{!v.eventObj.HD_Video__c}" 
+                                                     value="{!v.eventObj.HD_Video__c}" />
+                                </div>
+                                <div class="slds-form-element slds-size_1-of-1">
+                                    <lightning:input disabled="{!v.uiControls.isDisabled}" type="checkbox" 
+                                                     label="{!$Label.c.Join_From_Multiple_Devices_Label}" 
+                                                     checked="{!v.eventObj.Allow_Multiple_Devices__c}" 
+                                                     value="{!v.eventObj.Allow_Multiple_Devices__c}" />
+                                </div>
+                            </div>
+                            <div class="slds-form-element__row slds-p-bottom_xx-small">
+                                <div class="slds-form-element slds-size_1-of-2">
+                                    <lightning:input disabled="{!v.uiControls.isDisabled}" type="checkbox" 
+                                                     label="{!$Label.c.Start_Video_When_Host_Joins_Webinar_Label}" 
+                                                     checked="{!v.eventObj.Host_Video__c}" 
+                                                     value="{!v.eventObj.Host_Video__c}" />
+                                </div>
+                                <div class="slds-form-element slds-size_1-of-2">
+                                    <lightning:input disabled="{!v.uiControls.isDisabled}" type="checkbox" 
+                                                     label="{!$Label.c.Start_Video_When_Panelists_Join_Webinar_Label}" 
+                                                     checked="{!v.eventObj.Panelist_Video__c}" 
+                                                     value="{!v.eventObj.Panelist_Video__c}" />
+                                </div>
+                            </div>
+                        </aura:if>
+                    </div>
+                </div>
+            </fieldset>        
+            <!--MEETING CONFIGURATION SECTION END-->
+            
+            <!--EMAIL NOTIFICATION SECTION START-->
+            <fieldset class="slds-form-element slds-form_compound">
+                <legend class="slds-form-element__legend slds-form-element__label slds-p-bottom_x-small slds-p-top_x-small">{!$Label.c.Notification_Settings_title_text}</legend>
+                <div class="slds-form-element__control">                
+                    <div class="slds-form-element__group">
+                        <div class="slds-form-element__row slds-p-bottom_xx-small">
+                            <div class="slds-form-element slds-size_1-of-2">
+                                <lightning:input disabled="{!v.uiControls.isDisabled}" type="checkbox" 
+                                                 label="{!$Label.c.Thankyou_Email_Notification}" 
+                                                 checked="{!v.eventObj.Thank_you_notification__c}" 
+                                                 value="{!v.eventObj.Thank_you_notification__c}" 
+                                                 onchange="{!c.changeThankyouValue}"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slds-form-element__row slds-p-bottom_xx-small">                                
+                        <div class="slds-form-element slds-size_1-of-2">
+                            <lightning:input disabled="{!v.disableCheckbox}" type="checkbox" 
+                                             label="{!$Label.c.Share_Survey_Link_Label}" 
+                                             onchange="{!c.changeSurveyLink}"
+                                             checked="{!v.eventObj.Share_Survey_Link__c}" 
+                                             value="{!v.eventObj.Share_Survey_Link__c}" />
+                        </div>
+                        <div class="slds-form-element slds-size_1-of-2">
+                            <aura:if isTrue="{!v.eventObj.Share_Survey_Link__c}">
+                                <div class="slds-form-element">
+                                    <lightning:input disabled="{!v.uiControls.isDisabled}" type="url" 
+                                                     onchange="{!c.changeSurveyLinkUrl}"
+                                                     label="{!$Label.c.Survey_Link_URL}" 
+                                                     value="{!v.eventObj.Survey_Link_URL__c}"/>
+                                </div>
+                            </aura:if>
+                            <aura:if isTrue="{!v.showSurveyUrlError}">
+                                <div class="slds-p-top--xxx-small error-message">
+                                    {!$Label.c.Enter_survey_URL_label}
+                                </div>
+                            </aura:if>
+                        </div>
+                    </div>
+                    
+                    <div class="slds-form-element__row slds-p-bottom_xx-small">                                
+                        <div class="slds-form-element slds-size_1-of-2">
+                            <lightning:input disabled="{!v.disableCheckbox}" type="checkbox" 
+                                             label="{!$Label.c.Share_Recording_URL_Label}" 
+                                             checked="{!v.eventObj.Share_Recording_URL__c}" 
+                                             value="{!v.eventObj.Share_Recording_URL__c}" />
+                        </div>
+                        <div class="slds-form-element slds-size_1-of-2">
+                            <aura:if isTrue="{!v.eventObj.Share_Recording_URL__c}">
+                                <div class="slds-form-element">
+                                    <lightning:input disabled="{!v.uiControls.isDisabled}" type="url" 
+                                                     label="{!$Label.c.Recording_URL_Label}" 
+                                                     value="{!v.eventObj.Meeting_Recording_URL__c}" />
+                                </div>
+                            </aura:if>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <!--EMAIL NOTIFICATION SECTION END-->
+            
+            <aura:if isTrue="{!!empty(v.recordId)}">
+                <fieldset class="slds-form-element slds-form_compound">
+                    <aura:if isTrue="{!and(!empty(v.attendees), !empty(v.newAttendees))}">
+                        <legend class="slds-form-element__legend slds-form-element__label slds-p-bottom_x-small slds-p-top_x-small">{!$Label.c.Manage_Invitees}</legend>
+                    </aura:if>
+                    <div class="slds-form-element__control">                
+                        <div class="slds-form-element__group">                        
+                            <aura:if isTrue="{!or(!empty(v.attendees), !empty(v.newAttendees))}">
+                                <lightning:tabset variant="scoped">
+                                    <aura:if isTrue="{!!empty(v.newAttendees)}">
+                                        <lightning:tab label="{!$Label.c.Meeting_Remaining_Attendees_Tab}">
+                                            <div class="slds-form-element__row">
+                                                <div class="slds-form-element slds-size_1-of-1">
+                                                    <c:Attendee_List lstAttendees="{!v.newAttendees}" />
+                                                </div>
+                                            </div>
+                                        </lightning:tab>
+                                    </aura:if>
+                                    <aura:if isTrue="{!!empty(v.attendees)}">
+                                        <lightning:tab label="{!$Label.c.Meeting_Invited_Attendees_Tab}">
+                                            <div class="slds-form-element__row">
+                                                <div class="slds-form-element slds-size_1-of-1">
+                                                    <c:Attendee_List lstAttendees="{!v.attendees}" allowSelection="false" />
+                                                </div>
+                                            </div>
+                                        </lightning:tab>
+                                    </aura:if>
+                                </lightning:tabset> 
+                            </aura:if>
+                        </div>
+                    </div>
+                </fieldset>
+            </aura:if>
+        </div> 
+        
+        <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+            <div class="forceChangeRecordTypeFooter">
+                <ui:button aura:id="btn-id" class="slds-button slds-button_neutral" label="{!$Label.c.Go_Back_Label}" 
+                           press="{!c.cancelEventPopup}" /> 
+                <ui:button aura:id="btn-id" class="slds-button slds-button--brand" 
+                           label="{!$Label.c.Send_Thank_You_Email}" press="{!c.sendThankyouEmailToAttendees}"/>
+                <aura:if isTrue="{!!empty(v.newAttendees)}">
+                    <ui:button aura:id="btn-id" class="slds-button slds-button--brand" 
+                               label="{!$Label.c.Send_Email_Invite_Button}" press="{!c.sendInvitation}"/>
+                </aura:if> 
+                <aura:if isTrue="{!v.uiControls.isDMLInProcess}">
+                    <ui:button aura:id="btn-id" class="slds-button slds-button--brand" 
+                               label="{!(empty(v.eventObj.Id) ? 'Create ' : 'Save ') + v.eventType}" 
+                               press="{!c.createEvent}"/>
+                </aura:if>
+            </div>
+        </div>
+        
+    </aura:if>
+    <!--MARKUP END-->
+</aura:component>

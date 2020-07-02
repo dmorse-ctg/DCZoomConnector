@@ -1,0 +1,1095 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>API_Settings</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>API Settings</shortDescription>
+        <value>API Settings</value>
+    </labels>
+    <labels>
+        <fullName>Action_Status_Waiting_Description_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Action Status Waiting Description Text</shortDescription>
+        <value>Loading...</value>
+    </labels>
+    <labels>
+        <fullName>Action_Status_Waiting_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Action Status Waiting Text</shortDescription>
+        <value>Please Wait...</value>
+    </labels>
+    <labels>
+        <fullName>All_Available_Contact_Lead_Invitee_List</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>All Available Contact/Lead Invitee List</shortDescription>
+        <value>Send the  invite to all the associated Leads/Contacts</value>
+    </labels>
+    <labels>
+        <fullName>Apex_Exception_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Apex Exception Error Message</shortDescription>
+        <value>There is some problem with the server. Please try after sometime</value>
+    </labels>
+    <labels>
+        <fullName>Attendee_Email_Address</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Attendee Email Address</shortDescription>
+        <value>Email Address</value>
+    </labels>
+    <labels>
+        <fullName>Attendee_Email_Notification_Template</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Attendee Email Notification Template</shortDescription>
+        <value>Thank_You_Email_Notification_Template</value>
+    </labels>
+    <labels>
+        <fullName>Attendee_First_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Attendee First Name</shortDescription>
+        <value>First Name</value>
+    </labels>
+    <labels>
+        <fullName>Attendee_Last_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Attendee Last Name</shortDescription>
+        <value>Last Name</value>
+    </labels>
+    <labels>
+        <fullName>Attendee_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Attendee Name</shortDescription>
+        <value>{AttendeeName}</value>
+    </labels>
+    <labels>
+        <fullName>Auth_Token_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Auth Token Error Message</shortDescription>
+        <value>API Key or Secret is incorrect. Please check again and enter the correct value.</value>
+    </labels>
+    <labels>
+        <fullName>Auto_Register</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Auto Register</shortDescription>
+        <value>Auto Register</value>
+    </labels>
+    <labels>
+        <fullName>Blank_Field_on_Meeting_Form_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Blank Field on Meeting Form Error Message</shortDescription>
+        <value>Review the errors on this page.</value>
+    </labels>
+    <labels>
+        <fullName>Cancel_Meeting</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Cancel Meeting</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>Cancel_Zoom_Settings</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Cancel Zoom Settings</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>Config_Details_Custom_Setting_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Config Details Custom Setting Name</shortDescription>
+        <value>Zoom Settings</value>
+    </labels>
+    <labels>
+        <fullName>Configuration_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Configuration Label</shortDescription>
+        <value>Configuration</value>
+    </labels>
+    <labels>
+        <fullName>Configuration_Setting_Title_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Configuration Setting Title Text</shortDescription>
+        <value>Configuration Setting</value>
+    </labels>
+    <labels>
+        <fullName>Create_Meeting</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Create Meeting</shortDescription>
+        <value>Create Meeting</value>
+    </labels>
+    <labels>
+        <fullName>Create_Webinar</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Create Webinar</shortDescription>
+        <value>Create Webinar</value>
+    </labels>
+    <labels>
+        <fullName>Declined_Meeting_Status</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Declined Meeting Status</shortDescription>
+        <value>Declined</value>
+    </labels>
+    <labels>
+        <fullName>Default_Crypto_Key</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Default Crypto Key</shortDescription>
+        <value>MITBpW2YsAufFskrYoYVTC/4j0vPlC7yPV9vJd3RzXs=</value>
+    </labels>
+    <labels>
+        <fullName>Default_to_HD_Video_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Default to HD Video Label</shortDescription>
+        <value>By default, broadcast host&apos;s video in HD</value>
+    </labels>
+    <labels>
+        <fullName>Defaults_to_HD_Video_Help_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Defaults to HD Video Help Text</shortDescription>
+        <value>Defaults the host&apos;s video to HD</value>
+    </labels>
+    <labels>
+        <fullName>Disabled_Thank_You_Email_Setting_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Disabled Thank You Email Setting Message</shortDescription>
+        <value>We can&apos;t send the Thank You email as the setting doesn&apos;t allow to send it</value>
+    </labels>
+    <labels>
+        <fullName>Edit_Zoom_Meeting</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Edit Zoom Meeting</shortDescription>
+        <value>Edit</value>
+    </labels>
+    <labels>
+        <fullName>Edit_Zoom_Settings</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Edit Zoom Settings</shortDescription>
+        <value>Edit</value>
+    </labels>
+    <labels>
+        <fullName>Email_Click_Link_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Email Click Link Message</shortDescription>
+        <value>Click here</value>
+    </labels>
+    <labels>
+        <fullName>Email_Error_Header_Msg</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Email Error Header Msg</shortDescription>
+        <value>The email couldn&apos;t be sent for:</value>
+    </labels>
+    <labels>
+        <fullName>Email_Invitation_Update_Email_Event_Line_1</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Email Invitation Update Email Event Line 1</shortDescription>
+        <value>,&lt;br/&gt;&lt;br/&gt;You are invited to the event. &lt;br/&gt; Please check the updated event details below.&lt;br/&gt;&lt;br/&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Email_Notification_Settings_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Email Notification Settings Label</shortDescription>
+        <value>Email Notification Settings</value>
+    </labels>
+    <labels>
+        <fullName>Email_Successfully_Sent_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Email Successfully Sent Message</shortDescription>
+        <value>Email has been sent successfully to selected Leads/Contacts</value>
+    </labels>
+    <labels>
+        <fullName>Enforce_Login</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Enforce Login</shortDescription>
+        <value>Enforce Login</value>
+    </labels>
+    <labels>
+        <fullName>Enforce_Login_Help_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Enforce Login Help Text</shortDescription>
+        <value>Enforce Login</value>
+    </labels>
+    <labels>
+        <fullName>Enter_survey_URL_label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Enter survey URL label</shortDescription>
+        <value>Please enter Survey URL</value>
+    </labels>
+    <labels>
+        <fullName>Event_Invitation_Accept</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event Invitation Accept</shortDescription>
+        <value>Accept</value>
+    </labels>
+    <labels>
+        <fullName>Event_Invitation_Already_Registered_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event Invitation Already Registered Message</shortDescription>
+        <value>You have already registered for this meeting.</value>
+    </labels>
+    <labels>
+        <fullName>Event_Invitation_Apex_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event Invitation Apex Error Message</shortDescription>
+        <value>There was some problem in processing your request. Please try after sometime.</value>
+    </labels>
+    <labels>
+        <fullName>Event_Invitation_Decline</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event Invitation Decline</shortDescription>
+        <value>Decline</value>
+    </labels>
+    <labels>
+        <fullName>Event_Invitation_Email_Line1</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event Invitation Email Line1</shortDescription>
+        <value>,&lt;br/&gt;&lt;br/&gt;You are invited to the event. &lt;br/&gt; Please check the details below.&lt;br/&gt;&lt;br/&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Event_Invitation_Email_Registration_Details</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event Invitation Email Registration Details</shortDescription>
+        <value>&lt;br/&gt;&lt;br/&gt;Please click on the below link to confirm your availability.&lt;br/&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Event_Invitation_Email_Sender_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event Invitation Email Sender Name</shortDescription>
+        <value>Email Sender Name (Event Notification)</value>
+    </labels>
+    <labels>
+        <fullName>Event_Invitation_Email_Sender_Name_Help_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event Invitation Email Sender Name Help Text</shortDescription>
+        <value>Email Sender Name which will be displayed when event Invitation would be sent</value>
+    </labels>
+    <labels>
+        <fullName>Event_Invitation_Email_Template_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event Invitation Email Template Name</shortDescription>
+        <value>Event_Invite_Notification</value>
+    </labels>
+    <labels>
+        <fullName>Event_Invitation_Page_Title</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event Invitation Page Title</shortDescription>
+        <value>Event Invitation - Participation Details</value>
+    </labels>
+    <labels>
+        <fullName>Event_Invitation_Subject_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event Invitation Subject Label</shortDescription>
+        <value>Event Invitation</value>
+    </labels>
+    <labels>
+        <fullName>Event_Invitation_VF_Page_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event Invitation VF Page Name</shortDescription>
+        <value>SFZoom_ConfigParticipation</value>
+    </labels>
+    <labels>
+        <fullName>Event_Registration_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event Registration Message</shortDescription>
+        <value>Thank you for registering. Please check your email inbox.</value>
+    </labels>
+    <labels>
+        <fullName>Event_Start_Time_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event Start Time Error Message</shortDescription>
+        <value>start date should be today or later than today&apos;s date</value>
+    </labels>
+    <labels>
+        <fullName>Event_Topic</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event Topic</shortDescription>
+        <value>Event Topic: {0}</value>
+    </labels>
+    <labels>
+        <fullName>Event_Type</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event Type</shortDescription>
+        <value>Event Type: {0}</value>
+    </labels>
+    <labels>
+        <fullName>Event_Type_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event Type Label</shortDescription>
+        <value>Event Type</value>
+    </labels>
+    <labels>
+        <fullName>Event_updated_successfully</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event updated successfully Message</shortDescription>
+        <value>Event updated successfully</value>
+    </labels>
+    <labels>
+        <fullName>Generic_Settings</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Generic Settings</shortDescription>
+        <value>Generic Settings</value>
+    </labels>
+    <labels>
+        <fullName>Get_Participant_Details_From_Zoom_API</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Get Participant Details From Zoom API</shortDescription>
+        <value>https://api.zoom.us/v2/past_meetings/</value>
+    </labels>
+    <labels>
+        <fullName>Go_Back_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Go Back Label</shortDescription>
+        <value>Go Back</value>
+    </labels>
+    <labels>
+        <fullName>Insufficient_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Field level security error message</shortDescription>
+        <value>It seems you don&apos;t have sufficient access to perform this operation</value>
+    </labels>
+    <labels>
+        <fullName>Invalid_Set_up_Object_Detail</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Invalid Set up Object Detail</shortDescription>
+        <value>Invalid/Missing set up object detail</value>
+    </labels>
+    <labels>
+        <fullName>Invite_All_Leads_Contacts_Help_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Invite All Leads Contacts Help Text</shortDescription>
+        <value>When checked, all the associated Leads/Contacts will receive the invite. Leads/Contacts added in future will recieve the invite of the scheduled meeting/webinar</value>
+    </labels>
+    <labels>
+        <fullName>Invitee_Event_Status_Initiated</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Event Status when invitation email sent</shortDescription>
+        <value>Initiated</value>
+    </labels>
+    <labels>
+        <fullName>Invitee_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Invitee Name</shortDescription>
+        <value>{inviteeName}</value>
+    </labels>
+    <labels>
+        <fullName>Join_From_Multiple_Device_Help_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Join From Multiple Device Help Text</shortDescription>
+        <value>Allow attendees to join from multiple devices</value>
+    </labels>
+    <labels>
+        <fullName>Join_From_Multiple_Devices_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Join From Multiple Devices Label</shortDescription>
+        <value>Allow attendees to join from multiple devices</value>
+    </labels>
+    <labels>
+        <fullName>Join_before_Host</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Join before Host</shortDescription>
+        <value>Join before Host</value>
+    </labels>
+    <labels>
+        <fullName>Join_before_Host_Help_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Join before Host Help Text</shortDescription>
+        <value>Join before Host</value>
+    </labels>
+    <labels>
+        <fullName>List_User_API</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>List User API</shortDescription>
+        <value>https://api.zoom.us/v2/users</value>
+    </labels>
+    <labels>
+        <fullName>Manage_Invitee_List</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Manage Invites</shortDescription>
+        <value>Manage Invites</value>
+    </labels>
+    <labels>
+        <fullName>Manage_Invitees</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Manage Invites</shortDescription>
+        <value>Manage Invites</value>
+    </labels>
+    <labels>
+        <fullName>Maximum_Meeting_Duration</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Maximum Meeting Duration</shortDescription>
+        <value>300</value>
+    </labels>
+    <labels>
+        <fullName>Maximum_Meeting_Duration_Help_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Maximum Meeting Duration Help Text</shortDescription>
+        <value>It contains the value for maximum meeting duration</value>
+    </labels>
+    <labels>
+        <fullName>Maximum_Meeting_Duration_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Maximum Meeting Duration Label</shortDescription>
+        <value>Maximum Meeting Duration (In Minutes)</value>
+    </labels>
+    <labels>
+        <fullName>Maximum_Number_of_Invitee_Selection_To_Send_Email_Msg</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Message for maximum number which can be selected to send email invite</shortDescription>
+        <value>Please select 50 members only in one go</value>
+    </labels>
+    <labels>
+        <fullName>Maximum_and_Minimum_Meeting_Duration_Validation_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Maximum meeting duration is not greater than minimum meeting duration</shortDescription>
+        <value>Maximum meeting duration should always be greater than minimum meeting duration</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Agenda</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting Agenda</shortDescription>
+        <value>Agenda</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Attended_Value</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting Attended Value</shortDescription>
+        <value>Attended</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Cancelled_Value</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting Cancelled Value</shortDescription>
+        <value>Cancelled</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Created_Status</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting Created Status</shortDescription>
+        <value>CREATED</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Creation_Header</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting Creation Header</shortDescription>
+        <value>Schedule a New</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Duration</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting Duration</shortDescription>
+        <value>Duration (In Minutes)</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Duration_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting Duration Error Message</shortDescription>
+        <value>Please enter a value greater than 1.</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Ended_Event_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting Ended Event Name</shortDescription>
+        <value>meeting.ended</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Invitation_Decline_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting Invitation Decline Message</shortDescription>
+        <value>You have declined the meeting invite.</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Invited_Attendees_Tab</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting Invited Attendees Tab</shortDescription>
+        <value>Invited Contacts/Leads</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting Name</shortDescription>
+        <value>Meeting Name: {0}</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Or_Webinar_Creation_Exception_Msg</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting or Webinar Creation Apex Exception Message</shortDescription>
+        <value>There was some problem in creating meeting/webinar. Please verify the Zoom settings and metadata settings.</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Record_Type_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting Record Type Name</shortDescription>
+        <value>Meeting</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Registration_Cancelled_Event_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting Registration Cancelled Event Name</shortDescription>
+        <value>meeting.registration_cancelled</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Remaining_Attendees_Tab</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting Remaining Attendees Tab</shortDescription>
+        <value>Available/Remaining Contacts/Leads</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Settings</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting Settings</shortDescription>
+        <value>Meeting Settings</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Start_Time_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting Start Time Error Message</shortDescription>
+        <value>Please choose a start time</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Topic</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting Topic</shortDescription>
+        <value>Topic</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_Webinar_Creation_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Message if the Zoom Org doesn&apos;t have license to create meeting/webinar</shortDescription>
+        <value>There was some problem with creating Meeting/Webinar. Please check your zoom org license to create Meeting/Webinar and also check the Zoom settings saved in Salesforce</value>
+    </labels>
+    <labels>
+        <fullName>Meeting_or_Webinar_Details</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Meeting or Webinar Details</shortDescription>
+        <value>{Meeting/Webinar Details:}</value>
+    </labels>
+    <labels>
+        <fullName>Minimum_Meeting_Duration</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Minimum Meeting Duration</shortDescription>
+        <value>15</value>
+    </labels>
+    <labels>
+        <fullName>Minimum_Meeting_Duration_Help_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Minimum Meeting Duration Help Text</shortDescription>
+        <value>It contains the value for minimum meeting duration</value>
+    </labels>
+    <labels>
+        <fullName>Minimum_Meeting_Duration_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Minimum Meeting Duration Label</shortDescription>
+        <value>Minimum Meeting Duration (In Minutes)</value>
+    </labels>
+    <labels>
+        <fullName>Missing_Parameter_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Missing Parameter Error Message</shortDescription>
+        <value>Required parameters are missing</value>
+    </labels>
+    <labels>
+        <fullName>Missing_meeting_detail</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Missing meeting detail Error Message</shortDescription>
+        <value>Missing meeting detail</value>
+    </labels>
+    <labels>
+        <fullName>No_Attendees</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>No Attendees</shortDescription>
+        <value>No Attended Attendees</value>
+    </labels>
+    <labels>
+        <fullName>Notification_Settings_title_text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Email configuration</shortDescription>
+        <value>Email Configuration</value>
+    </labels>
+    <labels>
+        <fullName>Please_Enter_Survey_Link_Error_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Please Enter Survey Link Error Label</shortDescription>
+        <value>Please Enter Survey Link</value>
+    </labels>
+    <labels>
+        <fullName>Recording_Not_Received</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Recording Not Received</shortDescription>
+        <value>It seems you have not recorded the session or recording link has been not generated. Please try after some time.</value>
+    </labels>
+    <labels>
+        <fullName>Recording_URL_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Recording URL Label</shortDescription>
+        <value>Recording URL</value>
+    </labels>
+    <labels>
+        <fullName>Recording_Url_Details</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Recording Url Details</shortDescription>
+        <value>Recording Link Url: {0}</value>
+    </labels>
+    <labels>
+        <fullName>Registered_Meeting_Status</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Registered Meeting Status</shortDescription>
+        <value>Registered</value>
+    </labels>
+    <labels>
+        <fullName>Registration_Details</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Registration Details</shortDescription>
+        <value>{Registration Details:}</value>
+    </labels>
+    <labels>
+        <fullName>Required_Field_Missing_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Required Field Missing Error Message</shortDescription>
+        <value>Please provide relevant details for all the required fields.</value>
+    </labels>
+    <labels>
+        <fullName>SF_Site_URL</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SF Site URL</shortDescription>
+        <value>Salesforce Site URL</value>
+    </labels>
+    <labels>
+        <fullName>SF_Site_URL_Help_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SF Site URL Help Text</shortDescription>
+        <value>Site URL which is configured for the Event Invitation</value>
+    </labels>
+    <labels>
+        <fullName>SINGLE_EMAIL_LIMIT_EXCEEDED_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SINGLE EMAIL LIMIT EXCEEDED Error Message</shortDescription>
+        <value>Email Limit exceeded. Please try to send email after sometime or tomorrow.</value>
+    </labels>
+    <labels>
+        <fullName>Save_Zoom_Settings</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Save Zoom Settings</shortDescription>
+        <value>Save</value>
+    </labels>
+    <labels>
+        <fullName>Select_Attendee_to_Send_Invite_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Select Attendee To Send Invite Error Message</shortDescription>
+        <value>Please select a Lead/Contact to send invite.</value>
+    </labels>
+    <labels>
+        <fullName>Send_Email_Invite_Button</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Send Email Invite Button</shortDescription>
+        <value>Send Email Invite</value>
+    </labels>
+    <labels>
+        <fullName>Send_Thank_You_Email</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Send Thank You Email Button</shortDescription>
+        <value>Send Thank You Email</value>
+    </labels>
+    <labels>
+        <fullName>Share_Recording_URL_Helptext</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Share Recording URL Helptext</shortDescription>
+        <value>It contains recording play url value, available only when thankyou notification is checked.</value>
+    </labels>
+    <labels>
+        <fullName>Share_Recording_URL_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Share Recording URL Label</shortDescription>
+        <value>Share Recording URL</value>
+    </labels>
+    <labels>
+        <fullName>Share_Survey_Link_Helptext</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Share Survey Link Helptext</shortDescription>
+        <value>Share Survey Link in the Thank you Email Notification. This Feature needs Thank you Email Notification Enabled.</value>
+    </labels>
+    <labels>
+        <fullName>Share_Survey_Link_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Share Survey Link Label</shortDescription>
+        <value>Share Survey Link</value>
+    </labels>
+    <labels>
+        <fullName>Something_Went_Wrong_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Something went wrong error message</shortDescription>
+        <value>Something went wrong</value>
+    </labels>
+    <labels>
+        <fullName>Start_Date</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Start Date</shortDescription>
+        <value>Start Date</value>
+    </labels>
+    <labels>
+        <fullName>Start_Participant_Video_on_Join</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Start Participant Video on Join</shortDescription>
+        <value>Start Participant Video on Join</value>
+    </labels>
+    <labels>
+        <fullName>Start_Participant_Video_on_Join_Help_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Start Participant Video on Join Help Text</shortDescription>
+        <value>Start Participant Video when they join</value>
+    </labels>
+    <labels>
+        <fullName>Start_Time</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Start Time</shortDescription>
+        <value>Start Time</value>
+    </labels>
+    <labels>
+        <fullName>Start_Video_When_Host_Joins_Webinar_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Start Video When Host Joins Webinar Label</shortDescription>
+        <value>Start video when host joins webinar</value>
+    </labels>
+    <labels>
+        <fullName>Start_Video_When_Panelists_Join_Webinar_Help_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Start Video When Panelists Join Webinar Help Text</shortDescription>
+        <value>Start video when panelists join webinar</value>
+    </labels>
+    <labels>
+        <fullName>Start_Video_When_Panelists_Join_Webinar_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Start Video When Panelists Join Webinar Label</shortDescription>
+        <value>Start video when panelists join webinar</value>
+    </labels>
+    <labels>
+        <fullName>Start_video_when_host_joins_webinar_Help_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Start Video When Host Joins Webinar Help Text</shortDescription>
+        <value>Start video when host joins webinar</value>
+    </labels>
+    <labels>
+        <fullName>Survey_Link_URL</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Survey Link URL</shortDescription>
+        <value>Survey Link URL</value>
+    </labels>
+    <labels>
+        <fullName>Survey_Link_Url_Details</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Survey Link Url Details</shortDescription>
+        <value>Survey Link Url: {0}</value>
+    </labels>
+    <labels>
+        <fullName>Thank_you_email_notification_Helper_text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Thank you email notification Helper text</shortDescription>
+        <value>Attendee will receive thank you email by checking this checkbox</value>
+    </labels>
+    <labels>
+        <fullName>Thank_you_email_subject_label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Thank you email subject label</shortDescription>
+        <value>Thank you for attending the meeting/webinar</value>
+    </labels>
+    <labels>
+        <fullName>Thankyou_Email_Notification</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Thankyou Email Notification</shortDescription>
+        <value>Thank You Email Notification</value>
+    </labels>
+    <labels>
+        <fullName>Update_Meeting</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Update Meeting</shortDescription>
+        <value>Save Meeting</value>
+    </labels>
+    <labels>
+        <fullName>Update_Meeting_Header</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Update Meeting Header</shortDescription>
+        <value>Update Meeting</value>
+    </labels>
+    <labels>
+        <fullName>Update_Webinar_Button_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Update Webinar Button Label</shortDescription>
+        <value>Save Webinar</value>
+    </labels>
+    <labels>
+        <fullName>Webhook_Meeting_Ended_Event_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Webhook Meeting Ended Event Name</shortDescription>
+        <value>meeting_ended</value>
+    </labels>
+    <labels>
+        <fullName>Webinar_Ended_Event_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Webinar Ended Event Name</shortDescription>
+        <value>webinar.ended</value>
+    </labels>
+    <labels>
+        <fullName>Webinar_Record_Type_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Webinar Record Type Name</shortDescription>
+        <value>Webinar</value>
+    </labels>
+    <labels>
+        <fullName>Webinar_Registration_Cancelled_Event_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Webinar Registration Cancelled Event Name</shortDescription>
+        <value>webinar.registration_cancelled</value>
+    </labels>
+    <labels>
+        <fullName>Webinar_Settings</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Webinar Settings</shortDescription>
+        <value>Webinar Settings</value>
+    </labels>
+    <labels>
+        <fullName>Wrong_event_type</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Wrong event type Message</shortDescription>
+        <value>Wrong event type</value>
+    </labels>
+    <labels>
+        <fullName>Zoom_API_Key</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Zoom API Key</shortDescription>
+        <value>Zoom API Key</value>
+    </labels>
+    <labels>
+        <fullName>Zoom_API_Key_Help_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Zoom API Key Help Text</shortDescription>
+        <value>Zoom API Key</value>
+    </labels>
+    <labels>
+        <fullName>Zoom_API_Secret</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Zoom API Secret</shortDescription>
+        <value>Zoom API Secret</value>
+    </labels>
+    <labels>
+        <fullName>Zoom_API_Secret_Help_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Zoom API Secret Help Text</shortDescription>
+        <value>Zoom API Secret Key</value>
+    </labels>
+    <labels>
+        <fullName>Zoom_Auth_Token_Algorithm_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Zoom Auth Token Algorithm Name</shortDescription>
+        <value>HS256</value>
+    </labels>
+    <labels>
+        <fullName>Zoom_Auth_Token_Prefix</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Zoom Auth Token Prefix</shortDescription>
+        <value>Bearer</value>
+    </labels>
+    <labels>
+        <fullName>Zoom_Auth_Token_Valitidy_In_Miliseconds</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Zoom Auth Token Valitidy In Miliseconds</shortDescription>
+        <value>300000</value>
+    </labels>
+    <labels>
+        <fullName>Zoom_Base_EndPoint_URL</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Zoom Base EndPoint URL</shortDescription>
+        <value>https://api.zoom.us/v2/</value>
+    </labels>
+    <labels>
+        <fullName>Zoom_Setting_Not_Configured_Error_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Zoom Setting Not Configured Error Message</shortDescription>
+        <value>Please configure zoom setting to create any zoom meeting/webinar</value>
+    </labels>
+    <labels>
+        <fullName>Zoom_Setting_Page_Title</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Zoom Setting Page Title</shortDescription>
+        <value>Zoom Settings</value>
+    </labels>
+    <labels>
+        <fullName>Zoom_URL</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Zoom URL</shortDescription>
+        <value>Zoom URL</value>
+    </labels>
+    <labels>
+        <fullName>Zoom_URL_Help_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Zoom URL Help Text</shortDescription>
+        <value>Zoom Account URL. Ex - https://zoom.us/j/</value>
+    </labels>
+    <labels>
+        <fullName>Zoom_User_Email</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Zoom User Email</shortDescription>
+        <value>Zoom User Email</value>
+    </labels>
+    <labels>
+        <fullName>Zoom_User_Email_Help_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Zoom User Email Help Text</shortDescription>
+        <value>Zoom Account Users Email address for whom meeting/webinar needs to be created.</value>
+    </labels>
+    <labels>
+        <fullName>Zoom_User_Email_Validation_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Zoom User Email Validation Message</shortDescription>
+        <value>Please provide Zoom User Email Id</value>
+    </labels>
+</CustomLabels>
