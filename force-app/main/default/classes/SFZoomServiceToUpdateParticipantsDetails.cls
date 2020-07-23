@@ -308,7 +308,8 @@
                 String participantEmail = String.valueOf(mapOfParticipantDetails.get('user_email'));
                 if(String.isNotBlank(participantId)){
                     mapOfParticipantsIdAndName.put(participantId, String.valueOf(mapOfParticipantDetails.get('name')));
-                }else if(String.isNotBlank(participantEmail)){
+                }
+                if(String.isNotBlank(participantEmail)){
                     mapOfParticipantsIdAndName.put(participantEmail, String.valueOf(mapOfParticipantDetails.get('name')));
                 }
             }
